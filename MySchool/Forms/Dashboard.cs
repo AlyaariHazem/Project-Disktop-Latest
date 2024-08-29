@@ -32,6 +32,10 @@ namespace MySchool.Forms
 
 
             }
+            else if(message.ToLower() == "جميع الطلاب")
+            {
+                LoadUserControlStudents();
+            }
         }
         private void LoadUserControlStage()
         {
@@ -43,6 +47,16 @@ namespace MySchool.Forms
             userControlStages.Dock = DockStyle.Fill;
 
             panel1.Controls.Add(userControlStages);
+        }
+        private void LoadUserControlStudents()
+        {
+            panel1.Controls.Clear();
+
+            UserControlStudents userControlStudents = new UserControlStudents();
+
+            userControlStudents.Dock = DockStyle.Fill;
+
+            panel1.Controls.Add(userControlStudents);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)

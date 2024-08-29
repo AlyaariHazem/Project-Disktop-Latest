@@ -132,11 +132,17 @@
     <Compile Include="TeacherSubjectStudent.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="userControl\Students.cs">
+    <Compile Include="userControl\UserControlAddStudent.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="userControl\Students.Designer.cs">
-      <DependentUpon>Students.cs</DependentUpon>
+    <Compile Include="userControl\UserControlAddStudent.Designer.cs">
+      <DependentUpon>UserControlAddStudent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="userControl\UserControlStudents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\UserControlStudents.Designer.cs">
+      <DependentUpon>UserControlStudents.cs</DependentUpon>
     </Compile>
     <Compile Include="userControl\userControlStages.cs">
       <SubType>UserControl</SubType>
@@ -166,8 +172,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="userControl\Students.resx">
-      <DependentUpon>Students.cs</DependentUpon>
+    <EmbeddedResource Include="userControl\UserControlAddStudent.resx">
+      <DependentUpon>UserControlAddStudent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userControl\UserControlStudents.resx">
+      <DependentUpon>UserControlStudents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userControl\userControlStages.resx">
       <DependentUpon>userControlStages.cs</DependentUpon>

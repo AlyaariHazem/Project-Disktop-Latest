@@ -114,7 +114,7 @@ namespace MySchool.userControl
 
         private void StyleDataGridView(Guna2DataGridView x)
         {
-            guna2TabControl1.RightToLeft = RightToLeft.Yes;
+            guna2TabControl1.RightToLeft =RightToLeft.Yes;
             guna2TabControl1.RightToLeftLayout = true;
 
             // DataGridView properties
@@ -686,9 +686,26 @@ namespace MySchool.userControl
         }
 
 
-        private void DeleteDivision(int classID)
+        private void DeleteDivision(int DivisionID)
         {
-            
+            var result = MessageBox.Show("هل أنت متأكد من أنك تريد حذف الشعبة ؟", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+            if (result == DialogResult.Yes)
+            {
+                var Division = db.Divisions.Find(DivisionID);
+                if (Division != null)
+                {
+                    db.Divisions.Remove(Division);
+                    db.SaveChanges();
+                    MessageBox.Show("ّ!تم حذف الشعبة بنجاح");
+
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show(".الصـف غير موجودة");
+                }
+            }
+
         }
 
         private void UpdateDivision()
@@ -738,7 +755,7 @@ namespace MySchool.userControl
             else
             {
                 AddDivision();
-            }
+            } 
         }
 
     }
