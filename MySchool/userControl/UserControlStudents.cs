@@ -32,6 +32,7 @@ namespace MySchool.userControl
             guna2DataGridView1.Columns.Add("Age", "العمر");
             guna2DataGridView1.Columns.Add("Type", "النوع");
             guna2DataGridView1.Columns.Add("HireDate", "تاريخ التسجيل");
+            
 
             var buttonColumn3 = new DataGridViewButtonColumn
             {

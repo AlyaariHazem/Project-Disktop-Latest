@@ -1,5 +1,4 @@
-﻿using MySchool.Forms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,20 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace MySchool
+namespace MySchool.userControl
 {
-    public partial class Form1 : Form
+    public partial class UserControlDashboard : UserControl
     {
-        public Form1()
+        public UserControlDashboard()
         {
             InitializeComponent();
         }
 
-        private void guna2GradientButton1_Click(object sender, EventArgs e)
+        private void label3_Click(object sender, EventArgs e)
         {
-            Login login = new Login();
-            login.Show();
-            this.Visible=false;
+
         }
     }
 }

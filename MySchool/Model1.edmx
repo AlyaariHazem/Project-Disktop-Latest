@@ -97,8 +97,8 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="StageName" Type="nvarchar" MaxLength="255" />
+          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
+          <Property Name="StageName" MaxLength="255" Type="nvarchar" />
           <Property Name="Note" Type="nvarchar(max)" />
           <Property Name="active" Type="int" />
         </EntityType>
@@ -718,9 +718,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="StageName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
-          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
+          <Property Name="StageName" MaxLength="255" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="Note" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
           <Property Name="active" Type="Int32" />
         </EntityType>
         <EntityType Name="Stages">

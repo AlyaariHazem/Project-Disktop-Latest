@@ -18,10 +18,16 @@ namespace MySchool.userControl
             guna2TabControl1.RightToLeft = RightToLeft.Yes;
             guna2TabControl1.RightToLeftLayout = true;
             guna2TabControl1.Alignment = TabAlignment.Top;
+            
 
         }
 
         private void UserControlAddStudent_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label5_Click(object sender, EventArgs e)
         {
 
         }

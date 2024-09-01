@@ -47,6 +47,7 @@
             this.guna2HtmlLabel1.Name = "guna2HtmlLabel1";
             this.guna2HtmlLabel1.Size = new System.Drawing.Size(3, 2);
             this.guna2HtmlLabel1.TabIndex = 2;
+            this.guna2HtmlLabel1.Text = null;
             this.guna2HtmlLabel1.TextAlignment = System.Drawing.ContentAlignment.TopCenter;
             this.guna2HtmlLabel1.Visible = false;
             // 
@@ -65,6 +66,7 @@
             this.guna2GradientButton1.Size = new System.Drawing.Size(180, 45);
             this.guna2GradientButton1.TabIndex = 7;
             this.guna2GradientButton1.Text = "تسجيل الدخول";
+            this.guna2GradientButton1.Click += new System.EventHandler(this.guna2GradientButton1_Click);
             // 
             // label1
             // 

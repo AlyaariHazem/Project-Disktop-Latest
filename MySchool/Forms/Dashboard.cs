@@ -16,6 +16,12 @@ namespace MySchool.Forms
         public Dashboard()
         {
             InitializeComponent();
+
+            panel1.Controls.Clear();
+            UserControlDashboard userControlDashboard = new UserControlDashboard();
+            userControlDashboard.Dock = DockStyle.Fill;
+            panel1.Controls.Add(userControlDashboard);
+
         }
 
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
