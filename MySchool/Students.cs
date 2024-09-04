@@ -34,6 +34,9 @@ namespace MySchool
         public int GuardianID { get; set; }
         public int UserID { get; set; }
         public int DivisionID { get; set; }
+        public string birth_city { get; set; }
+        public string photo { get; set; }
+        public string current_city { get; set; }
     
         public virtual Divisions Divisions { get; set; }
         public virtual Guardians Guardians { get; set; }

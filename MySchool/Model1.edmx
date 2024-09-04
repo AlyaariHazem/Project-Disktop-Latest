@@ -4,8 +4,8 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SchoolDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityType Name="__EFMigrationsHistory">
+    <Schema Namespace="SchoolDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="C__EFMigrationsHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
           </Key>
@@ -66,8 +66,8 @@
             <PropertyRef Name="SalaryID" />
           </Key>
           <Property Name="SalaryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="SalaryMonth" Type="date" Nullable="false" />
-          <Property Name="SalaryHireDate" Type="date" Nullable="false" />
+          <Property Name="SalaryMonth" Type="datetime" Nullable="false" />
+          <Property Name="SalaryHireDate" Type="datetime" Nullable="false" />
           <Property Name="Note" Type="nvarchar(max)" />
           <Property Name="SalaryAmount" Type="int" Nullable="false" />
           <Property Name="TeacherID" Type="int" Nullable="false" />
@@ -79,7 +79,7 @@
           <Property Name="SchoolID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="SchoolName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="SchoolNameEn" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="School_Crea_Date" Type="date" Nullable="false" />
+          <Property Name="School_Crea_Date" Type="datetime" Nullable="false" />
           <Property Name="SchoolVison" Type="nvarchar(max)" />
           <Property Name="SchoolMission" Type="nvarchar(max)" />
           <Property Name="SchoolGoal" Type="nvarchar(max)" Nullable="false" />
@@ -97,8 +97,8 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
-          <Property Name="StageName" MaxLength="255" Type="nvarchar" />
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StageName" Type="nvarchar" MaxLength="255" />
           <Property Name="Note" Type="nvarchar(max)" />
           <Property Name="active" Type="int" />
         </EntityType>
@@ -110,16 +110,16 @@
           <Property Name="StageName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Note" Type="nvarchar(max)" />
           <Property Name="Active" Type="bit" Nullable="false" />
-          <Property Name="HireDate" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="HireDate" Type="datetime" Nullable="false" />
           <Property Name="YearID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="StudentClass">
           <Key>
-            <PropertyRef Name="ClassID" />
-            <PropertyRef Name="StudentID" />
+            <PropertyRef Name="Classes_ClassID" />
+            <PropertyRef Name="Students_StudentID" />
           </Key>
-          <Property Name="ClassID" Type="int" Nullable="false" />
-          <Property Name="StudentID" Type="int" Nullable="false" />
+          <Property Name="Classes_ClassID" Type="int" Nullable="false" />
+          <Property Name="Students_StudentID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="Students">
           <Key>
@@ -130,12 +130,15 @@
           <Property Name="FullName_SecondName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="FullName_ThirdName" Type="nvarchar(max)" Nullable="false" />
           <Property Name="FullName_LastName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="DateOfBirth" Type="date" Nullable="false" />
+          <Property Name="DateOfBirth" Type="datetime" Nullable="false" />
           <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Phone" Type="nvarchar(max)" />
           <Property Name="GuardianID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="DivisionID" Type="int" Nullable="false" />
+          <Property Name="birth_city" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="photo" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="current_city" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
@@ -167,17 +170,17 @@
           <Property Name="Email" Type="nvarchar(max)" />
           <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Age" Type="int" />
-          <Property Name="HireDate" Type="date" Nullable="false" />
+          <Property Name="HireDate" Type="datetime" Nullable="false" />
           <Property Name="ManagerID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TeacherStudents">
           <Key>
-            <PropertyRef Name="StudentID" />
-            <PropertyRef Name="TeacherID" />
+            <PropertyRef Name="Students_StudentID" />
+            <PropertyRef Name="Teachers_TeacherID" />
           </Key>
-          <Property Name="StudentID" Type="int" Nullable="false" />
-          <Property Name="TeacherID" Type="int" Nullable="false" />
+          <Property Name="Students_StudentID" Type="int" Nullable="false" />
+          <Property Name="Teachers_TeacherID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TeacherSubjectStudent">
           <Key>
@@ -195,8 +198,8 @@
           </Key>
           <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="nvarchar(max)" Nullable="false" />
-          <Property Name="CreatedAt" Type="datetime2" Precision="7" Nullable="false" />
-          <Property Name="UpdatedAt" Type="datetime2" Precision="7" Nullable="false" />
+          <Property Name="CreatedAt" Type="datetime" Nullable="false" />
+          <Property Name="UpdatedAt" Type="datetime" Nullable="false" />
           <Property Name="UserType" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Password" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
@@ -205,9 +208,9 @@
             <PropertyRef Name="YearID" />
           </Key>
           <Property Name="YearID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="YearDateStart" Type="date" Nullable="false" />
-          <Property Name="YearDateEnd" Type="date" Nullable="false" />
-          <Property Name="HireDate" Type="date" Nullable="false" />
+          <Property Name="YearDateStart" Type="datetime" Nullable="false" />
+          <Property Name="YearDateEnd" Type="datetime" Nullable="false" />
+          <Property Name="HireDate" Type="datetime" Nullable="false" />
           <Property Name="Active" Type="bit" Nullable="false" />
           <Property Name="SchoolID" Type="int" Nullable="false" />
         </EntityType>
@@ -295,7 +298,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StudentClass_Classes_ClassID">
+        <Association Name="FK_StudentClass_Classes">
           <End Role="Classes" Type="Self.Classes" Multiplicity="1" />
           <End Role="StudentClass" Type="Self.StudentClass" Multiplicity="*" />
           <ReferentialConstraint>
@@ -303,11 +306,11 @@
               <PropertyRef Name="ClassID" />
             </Principal>
             <Dependent Role="StudentClass">
-              <PropertyRef Name="ClassID" />
+              <PropertyRef Name="Classes_ClassID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_StudentClass_Students_StudentID">
+        <Association Name="FK_StudentClass_Students">
           <End Role="Students" Type="Self.Students" Multiplicity="1" />
           <End Role="StudentClass" Type="Self.StudentClass" Multiplicity="*" />
           <ReferentialConstraint>
@@ -315,7 +318,7 @@
               <PropertyRef Name="StudentID" />
             </Principal>
             <Dependent Role="StudentClass">
-              <PropertyRef Name="StudentID" />
+              <PropertyRef Name="Students_StudentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -417,7 +420,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TeacherStudents_Students_StudentID">
+        <Association Name="FK_TeacherStudents_Students">
           <End Role="Students" Type="Self.Students" Multiplicity="1" />
           <End Role="TeacherStudents" Type="Self.TeacherStudents" Multiplicity="*" />
           <ReferentialConstraint>
@@ -425,11 +428,11 @@
               <PropertyRef Name="StudentID" />
             </Principal>
             <Dependent Role="TeacherStudents">
-              <PropertyRef Name="StudentID" />
+              <PropertyRef Name="Students_StudentID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_TeacherStudents_Teachers_TeacherID">
+        <Association Name="FK_TeacherStudents_Teachers">
           <End Role="Teachers" Type="Self.Teachers" Multiplicity="1" />
           <End Role="TeacherStudents" Type="Self.TeacherStudents" Multiplicity="*" />
           <ReferentialConstraint>
@@ -437,7 +440,7 @@
               <PropertyRef Name="TeacherID" />
             </Principal>
             <Dependent Role="TeacherStudents">
-              <PropertyRef Name="TeacherID" />
+              <PropertyRef Name="Teachers_TeacherID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -496,7 +499,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="SchoolDBModelStoreContainer">
-          <EntitySet Name="__EFMigrationsHistory" EntityType="Self.__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Classes" EntityType="Self.Classes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Divisions" EntityType="Self.Divisions" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Guardians" EntityType="Self.Guardians" Schema="dbo" store:Type="Tables" />
@@ -542,11 +545,11 @@
             <End Role="Years" EntitySet="Years" />
             <End Role="Stages" EntitySet="Stages" />
           </AssociationSet>
-          <AssociationSet Name="FK_StudentClass_Classes_ClassID" Association="Self.FK_StudentClass_Classes_ClassID">
+          <AssociationSet Name="FK_StudentClass_Classes" Association="Self.FK_StudentClass_Classes">
             <End Role="Classes" EntitySet="Classes" />
             <End Role="StudentClass" EntitySet="StudentClass" />
           </AssociationSet>
-          <AssociationSet Name="FK_StudentClass_Students_StudentID" Association="Self.FK_StudentClass_Students_StudentID">
+          <AssociationSet Name="FK_StudentClass_Students" Association="Self.FK_StudentClass_Students">
             <End Role="Students" EntitySet="Students" />
             <End Role="StudentClass" EntitySet="StudentClass" />
           </AssociationSet>
@@ -582,11 +585,11 @@
             <End Role="Users" EntitySet="Users" />
             <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
-          <AssociationSet Name="FK_TeacherStudents_Students_StudentID" Association="Self.FK_TeacherStudents_Students_StudentID">
+          <AssociationSet Name="FK_TeacherStudents_Students" Association="Self.FK_TeacherStudents_Students">
             <End Role="Students" EntitySet="Students" />
             <End Role="TeacherStudents" EntitySet="TeacherStudents" />
           </AssociationSet>
-          <AssociationSet Name="FK_TeacherStudents_Teachers_TeacherID" Association="Self.FK_TeacherStudents_Teachers_TeacherID">
+          <AssociationSet Name="FK_TeacherStudents_Teachers" Association="Self.FK_TeacherStudents_Teachers">
             <End Role="Teachers" EntitySet="Teachers" />
             <End Role="TeacherStudents" EntitySet="TeacherStudents" />
           </AssociationSet>
@@ -607,8 +610,7 @@
             <End Role="Years" EntitySet="Years" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SchoolDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -684,8 +686,8 @@
             <PropertyRef Name="SalaryID" />
           </Key>
           <Property Name="SalaryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SalaryMonth" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="SalaryHireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="SalaryMonth" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SalaryHireDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SalaryAmount" Type="Int32" Nullable="false" />
           <Property Name="TeacherID" Type="Int32" Nullable="false" />
@@ -698,7 +700,7 @@
           <Property Name="SchoolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="SchoolName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="SchoolNameEn" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="School_Crea_Date" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="School_Crea_Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SchoolVison" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SchoolMission" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="SchoolGoal" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
@@ -731,7 +733,7 @@
           <Property Name="StageName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
-          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="YearID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Classes" Relationship="Self.FK_Classes_Stages_StageID" FromRole="Stages" ToRole="Classes" />
           <NavigationProperty Name="Years" Relationship="Self.FK_Stages_Years_YearID" FromRole="Stages" ToRole="Years" />
@@ -745,7 +747,7 @@
           <Property Name="FullName_SecondName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FullName_ThirdName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="FullName_LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateOfBirth" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Phone" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="GuardianID" Type="Int32" Nullable="false" />
@@ -758,6 +760,9 @@
           <NavigationProperty Name="TeacherSubjectStudent" Relationship="Self.FK_TeacherSubjectStudent_Students_StudentID" FromRole="Students" ToRole="TeacherSubjectStudent" />
           <NavigationProperty Name="Classes" Relationship="Self.StudentClass" FromRole="Students" ToRole="Classes" />
           <NavigationProperty Name="Teachers" Relationship="Self.TeacherStudents" FromRole="Students" ToRole="Teachers" />
+          <Property Name="birth_city" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="photo" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="current_city" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
@@ -794,7 +799,7 @@
           <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Age" Type="Int32" />
-          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="ManagerID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Managers" Relationship="Self.FK_Teachers_Managers_ManagerID" FromRole="Teachers" ToRole="Managers" />
@@ -822,8 +827,8 @@
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="7" />
-          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="7" />
+          <Property Name="CreatedAt" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="UserType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <NavigationProperty Name="Guardians" Relationship="Self.FK_Guardians_Users_UserID" FromRole="Users" ToRole="Guardians" />
@@ -836,9 +841,9 @@
             <PropertyRef Name="YearID" />
           </Key>
           <Property Name="YearID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="YearDateStart" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="YearDateEnd" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="YearDateStart" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="YearDateEnd" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="Active" Type="Boolean" Nullable="false" />
           <Property Name="SchoolID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Schools" Relationship="Self.FK_Years_Schools_SchoolID" FromRole="Years" ToRole="Schools" />
@@ -1194,230 +1199,232 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="SchoolDBModelStoreContainer" CdmEntityContainer="SchoolDBEntities">
-          <EntitySetMapping Name="C__EFMigrationsHistory">
-            <EntityTypeMapping TypeName="SchoolDBModel.C__EFMigrationsHistory">
-              <MappingFragment StoreEntitySet="__EFMigrationsHistory">
-                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
-                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Classes">
-            <EntityTypeMapping TypeName="SchoolDBModel.Classes">
-              <MappingFragment StoreEntitySet="Classes">
-                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
-                <ScalarProperty Name="ClassName" ColumnName="ClassName" />
-                <ScalarProperty Name="ClassYear" ColumnName="ClassYear" />
-                <ScalarProperty Name="StageID" ColumnName="StageID" />
-                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Divisions">
-            <EntityTypeMapping TypeName="SchoolDBModel.Divisions">
-              <MappingFragment StoreEntitySet="Divisions">
-                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
-                <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
-                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Guardians">
-            <EntityTypeMapping TypeName="SchoolDBModel.Guardians">
-              <MappingFragment StoreEntitySet="Guardians">
-                <ScalarProperty Name="GuardianID" ColumnName="GuardianID" />
-                <ScalarProperty Name="FullName_FirstName" ColumnName="FullName_FirstName" />
-                <ScalarProperty Name="FullName_SecondName" ColumnName="FullName_SecondName" />
-                <ScalarProperty Name="FullName_ThirdName" ColumnName="FullName_ThirdName" />
-                <ScalarProperty Name="FullName_LastName" ColumnName="FullName_LastName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Job" ColumnName="Job" />
-                <ScalarProperty Name="TypeGuardian" ColumnName="TypeGuardian" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Managers">
-            <EntityTypeMapping TypeName="SchoolDBModel.Managers">
-              <MappingFragment StoreEntitySet="Managers">
-                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
-                <ScalarProperty Name="FullName_FirstName" ColumnName="FullName_FirstName" />
-                <ScalarProperty Name="FullName_SecondName" ColumnName="FullName_SecondName" />
-                <ScalarProperty Name="FullName_ThirdName" ColumnName="FullName_ThirdName" />
-                <ScalarProperty Name="FullName_LastName" ColumnName="FullName_LastName" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Salarys">
-            <EntityTypeMapping TypeName="SchoolDBModel.Salarys">
-              <MappingFragment StoreEntitySet="Salarys">
-                <ScalarProperty Name="SalaryID" ColumnName="SalaryID" />
-                <ScalarProperty Name="SalaryMonth" ColumnName="SalaryMonth" />
-                <ScalarProperty Name="SalaryHireDate" ColumnName="SalaryHireDate" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="SalaryAmount" ColumnName="SalaryAmount" />
-                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Schools">
-            <EntityTypeMapping TypeName="SchoolDBModel.Schools">
-              <MappingFragment StoreEntitySet="Schools">
-                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
-                <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
-                <ScalarProperty Name="SchoolNameEn" ColumnName="SchoolNameEn" />
-                <ScalarProperty Name="School_Crea_Date" ColumnName="School_Crea_Date" />
-                <ScalarProperty Name="SchoolVison" ColumnName="SchoolVison" />
-                <ScalarProperty Name="SchoolMission" ColumnName="SchoolMission" />
-                <ScalarProperty Name="SchoolGoal" ColumnName="SchoolGoal" />
-                <ScalarProperty Name="Notes" ColumnName="Notes" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="SchoolPhone" ColumnName="SchoolPhone" />
-                <ScalarProperty Name="Street" ColumnName="Street" />
-                <ScalarProperty Name="SchoolType" ColumnName="SchoolType" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="fax" ColumnName="fax" />
-                <ScalarProperty Name="zone" ColumnName="zone" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Stage">
-            <EntityTypeMapping TypeName="SchoolDBModel.Stage">
-              <MappingFragment StoreEntitySet="Stage">
-                <ScalarProperty Name="id" ColumnName="id" />
-                <ScalarProperty Name="StageName" ColumnName="StageName" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="active" ColumnName="active" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Stages">
-            <EntityTypeMapping TypeName="SchoolDBModel.Stages">
-              <MappingFragment StoreEntitySet="Stages">
-                <ScalarProperty Name="StageID" ColumnName="StageID" />
-                <ScalarProperty Name="StageName" ColumnName="StageName" />
-                <ScalarProperty Name="Note" ColumnName="Note" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
-                <ScalarProperty Name="YearID" ColumnName="YearID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Students">
-            <EntityTypeMapping TypeName="SchoolDBModel.Students">
-              <MappingFragment StoreEntitySet="Students">
-                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-                <ScalarProperty Name="FullName_FirstName" ColumnName="FullName_FirstName" />
-                <ScalarProperty Name="FullName_SecondName" ColumnName="FullName_SecondName" />
-                <ScalarProperty Name="FullName_ThirdName" ColumnName="FullName_ThirdName" />
-                <ScalarProperty Name="FullName_LastName" ColumnName="FullName_LastName" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="GuardianID" ColumnName="GuardianID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Subjects">
-            <EntityTypeMapping TypeName="SchoolDBModel.Subjects">
-              <MappingFragment StoreEntitySet="Subjects">
-                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
-                <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
-                <ScalarProperty Name="ClassID" ColumnName="ClassID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="SubjectStudents">
-            <EntityTypeMapping TypeName="SchoolDBModel.SubjectStudents">
-              <MappingFragment StoreEntitySet="SubjectStudents">
-                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
-                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-                <ScalarProperty Name="Grade" ColumnName="Grade" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Teachers">
-            <EntityTypeMapping TypeName="SchoolDBModel.Teachers">
-              <MappingFragment StoreEntitySet="Teachers">
-                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
-                <ScalarProperty Name="FullName_FirstName" ColumnName="FullName_FirstName" />
-                <ScalarProperty Name="FullName_SecondName" ColumnName="FullName_SecondName" />
-                <ScalarProperty Name="FullName_ThirdName" ColumnName="FullName_ThirdName" />
-                <ScalarProperty Name="FullName_LastName" ColumnName="FullName_LastName" />
-                <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="Age" ColumnName="Age" />
-                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
-                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TeacherSubjectStudent">
-            <EntityTypeMapping TypeName="SchoolDBModel.TeacherSubjectStudent">
-              <MappingFragment StoreEntitySet="TeacherSubjectStudent">
-                <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
-                <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Users">
-            <EntityTypeMapping TypeName="SchoolDBModel.Users">
-              <MappingFragment StoreEntitySet="Users">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
-                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
-                <ScalarProperty Name="UserType" ColumnName="UserType" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Years">
-            <EntityTypeMapping TypeName="SchoolDBModel.Years">
-              <MappingFragment StoreEntitySet="Years">
-                <ScalarProperty Name="YearID" ColumnName="YearID" />
-                <ScalarProperty Name="YearDateStart" ColumnName="YearDateStart" />
-                <ScalarProperty Name="YearDateEnd" ColumnName="YearDateEnd" />
-                <ScalarProperty Name="HireDate" ColumnName="HireDate" />
-                <ScalarProperty Name="Active" ColumnName="Active" />
-                <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <AssociationSetMapping Name="StudentClass" TypeName="SchoolDBModel.StudentClass" StoreEntitySet="StudentClass">
-            <EndProperty Name="Classes">
-              <ScalarProperty Name="ClassID" ColumnName="ClassID" />
-            </EndProperty>
-            <EndProperty Name="Students">
-              <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-            </EndProperty>
-          </AssociationSetMapping>
-          <AssociationSetMapping Name="TeacherStudents" TypeName="SchoolDBModel.TeacherStudents" StoreEntitySet="TeacherStudents">
-            <EndProperty Name="Students">
-              <ScalarProperty Name="StudentID" ColumnName="StudentID" />
-            </EndProperty>
-            <EndProperty Name="Teachers">
-              <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
-            </EndProperty>
-          </AssociationSetMapping>
-        </EntityContainerMapping>
-      </Mapping>
-    </edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SchoolDBModelStoreContainer" CdmEntityContainer="SchoolDBEntities">
+    <EntitySetMapping Name="C__EFMigrationsHistory">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.C__EFMigrationsHistory)">
+        <MappingFragment StoreEntitySet="C__EFMigrationsHistory">
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Classes">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Classes)">
+        <MappingFragment StoreEntitySet="Classes">
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+          <ScalarProperty Name="ClassName" ColumnName="ClassName" />
+          <ScalarProperty Name="ClassYear" ColumnName="ClassYear" />
+          <ScalarProperty Name="StageID" ColumnName="StageID" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Divisions">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Divisions)">
+        <MappingFragment StoreEntitySet="Divisions">
+          <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+          <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Guardians">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Guardians)">
+        <MappingFragment StoreEntitySet="Guardians">
+          <ScalarProperty Name="GuardianID" ColumnName="GuardianID" />
+          <ScalarProperty Name="FullName_FirstName" ColumnName="FullName_FirstName" />
+          <ScalarProperty Name="FullName_SecondName" ColumnName="FullName_SecondName" />
+          <ScalarProperty Name="FullName_ThirdName" ColumnName="FullName_ThirdName" />
+          <ScalarProperty Name="FullName_LastName" ColumnName="FullName_LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Job" ColumnName="Job" />
+          <ScalarProperty Name="TypeGuardian" ColumnName="TypeGuardian" />
+          <ScalarProperty Name="Description" ColumnName="Description" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Managers">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Managers)">
+        <MappingFragment StoreEntitySet="Managers">
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="FullName_FirstName" ColumnName="FullName_FirstName" />
+          <ScalarProperty Name="FullName_SecondName" ColumnName="FullName_SecondName" />
+          <ScalarProperty Name="FullName_ThirdName" ColumnName="FullName_ThirdName" />
+          <ScalarProperty Name="FullName_LastName" ColumnName="FullName_LastName" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Salarys">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Salarys)">
+        <MappingFragment StoreEntitySet="Salarys">
+          <ScalarProperty Name="SalaryID" ColumnName="SalaryID" />
+          <ScalarProperty Name="SalaryMonth" ColumnName="SalaryMonth" />
+          <ScalarProperty Name="SalaryHireDate" ColumnName="SalaryHireDate" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="SalaryAmount" ColumnName="SalaryAmount" />
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schools">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Schools)">
+        <MappingFragment StoreEntitySet="Schools">
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+          <ScalarProperty Name="SchoolName" ColumnName="SchoolName" />
+          <ScalarProperty Name="SchoolNameEn" ColumnName="SchoolNameEn" />
+          <ScalarProperty Name="School_Crea_Date" ColumnName="School_Crea_Date" />
+          <ScalarProperty Name="SchoolVison" ColumnName="SchoolVison" />
+          <ScalarProperty Name="SchoolMission" ColumnName="SchoolMission" />
+          <ScalarProperty Name="SchoolGoal" ColumnName="SchoolGoal" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="SchoolPhone" ColumnName="SchoolPhone" />
+          <ScalarProperty Name="Street" ColumnName="Street" />
+          <ScalarProperty Name="SchoolType" ColumnName="SchoolType" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="fax" ColumnName="fax" />
+          <ScalarProperty Name="zone" ColumnName="zone" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stage">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Stage)">
+        <MappingFragment StoreEntitySet="Stage">
+          <ScalarProperty Name="id" ColumnName="id" />
+          <ScalarProperty Name="StageName" ColumnName="StageName" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="active" ColumnName="active" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Stages">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Stages)">
+        <MappingFragment StoreEntitySet="Stages">
+          <ScalarProperty Name="StageID" ColumnName="StageID" />
+          <ScalarProperty Name="StageName" ColumnName="StageName" />
+          <ScalarProperty Name="Note" ColumnName="Note" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="YearID" ColumnName="YearID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Students">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Students)">
+        <MappingFragment StoreEntitySet="Students">
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="FullName_FirstName" ColumnName="FullName_FirstName" />
+          <ScalarProperty Name="FullName_SecondName" ColumnName="FullName_SecondName" />
+          <ScalarProperty Name="FullName_ThirdName" ColumnName="FullName_ThirdName" />
+          <ScalarProperty Name="FullName_LastName" ColumnName="FullName_LastName" />
+          <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="GuardianID" ColumnName="GuardianID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+          <ScalarProperty Name="birth_city" ColumnName="birth_city" />
+          <ScalarProperty Name="photo" ColumnName="photo" />
+          <ScalarProperty Name="current_city" ColumnName="current_city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Subjects">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Subjects)">
+        <MappingFragment StoreEntitySet="Subjects">
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="SubjectName" ColumnName="SubjectName" />
+          <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SubjectStudents">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.SubjectStudents)">
+        <MappingFragment StoreEntitySet="SubjectStudents">
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Grade" ColumnName="Grade" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Teachers">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Teachers)">
+        <MappingFragment StoreEntitySet="Teachers">
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="FullName_FirstName" ColumnName="FullName_FirstName" />
+          <ScalarProperty Name="FullName_SecondName" ColumnName="FullName_SecondName" />
+          <ScalarProperty Name="FullName_ThirdName" ColumnName="FullName_ThirdName" />
+          <ScalarProperty Name="FullName_LastName" ColumnName="FullName_LastName" />
+          <ScalarProperty Name="PhoneNum" ColumnName="PhoneNum" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TeacherSubjectStudent">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.TeacherSubjectStudent)">
+        <MappingFragment StoreEntitySet="TeacherSubjectStudent">
+          <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
+          <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Users">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Users)">
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+          <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+          <ScalarProperty Name="UserType" ColumnName="UserType" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Years">
+      <EntityTypeMapping TypeName="IsTypeOf(SchoolDBModel.Years)">
+        <MappingFragment StoreEntitySet="Years">
+          <ScalarProperty Name="YearID" ColumnName="YearID" />
+          <ScalarProperty Name="YearDateStart" ColumnName="YearDateStart" />
+          <ScalarProperty Name="YearDateEnd" ColumnName="YearDateEnd" />
+          <ScalarProperty Name="HireDate" ColumnName="HireDate" />
+          <ScalarProperty Name="Active" ColumnName="Active" />
+          <ScalarProperty Name="SchoolID" ColumnName="SchoolID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="StudentClass" TypeName="SchoolDBModel.StudentClass" StoreEntitySet="StudentClass">
+      <EndProperty Name="Classes">
+        <ScalarProperty Name="ClassID" ColumnName="Classes_ClassID" />
+      </EndProperty>
+      <EndProperty Name="Students">
+        <ScalarProperty Name="StudentID" ColumnName="Students_StudentID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TeacherStudents" TypeName="SchoolDBModel.TeacherStudents" StoreEntitySet="TeacherStudents">
+      <EndProperty Name="Students">
+        <ScalarProperty Name="StudentID" ColumnName="Students_StudentID" />
+      </EndProperty>
+      <EndProperty Name="Teachers">
+        <ScalarProperty Name="TeacherID" ColumnName="Teachers_TeacherID" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
   <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
@@ -1429,9 +1436,9 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
-        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
       </DesignerInfoPropertySet>
     </Options>

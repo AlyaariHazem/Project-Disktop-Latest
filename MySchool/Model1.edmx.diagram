@@ -17,7 +17,7 @@
         <EntityTypeShape EntityType="SchoolDBModel.Students" Width="1.5" PointX="5.25" PointY="6.375" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolDBModel.Subjects" Width="1.5" PointX="7.5" PointY="10.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolDBModel.SubjectStudents" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="SchoolDBModel.Teachers" Width="1.5" PointX="7.5" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SchoolDBModel.Teachers" Width="1.375" PointX="7.625" PointY="2.25" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolDBModel.TeacherSubjectStudent" Width="1.5" PointX="9.75" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolDBModel.Users" Width="1.5" PointX="0.75" PointY="7.125" IsExpanded="true" />
         <EntityTypeShape EntityType="SchoolDBModel.Years" Width="1.5" PointX="1.5" PointY="19.375" IsExpanded="true" />
