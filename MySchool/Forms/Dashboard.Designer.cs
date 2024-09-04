@@ -47,36 +47,43 @@
             treeNode7,
             treeNode8,
             treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("أولياء الأمور");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("التقويم");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("الأختبارات");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("العطل");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("الحسابات");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("المدونات");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("الإدارة");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("عرض المواد");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("إضافة درجات");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("إضافة مادة");
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("المواد الدراسية", new System.Windows.Forms.TreeNode[] {
+            treeNode11,
+            treeNode12,
+            treeNode13});
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("أولياء الأمور");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("التقويم");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("الأختبارات");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("العطل");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("الحسابات");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("المدونات");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("الإدارة");
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
-            this.label3 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox5 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label3 = new System.Windows.Forms.Label();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.guna2Panel1.SuspendLayout();
-            this.guna2Panel2.SuspendLayout();
-            this.guna2Panel3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
+            this.guna2Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
+            this.guna2Panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -123,155 +130,6 @@
             this.guna2Panel1.Size = new System.Drawing.Size(1070, 64);
             this.guna2Panel1.TabIndex = 1;
             // 
-            // guna2Panel2
-            // 
-            this.guna2Panel2.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.guna2Panel2.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel2.BorderRadius = 2;
-            this.guna2Panel2.BorderThickness = 1;
-            this.guna2Panel2.Controls.Add(this.label1);
-            this.guna2Panel2.Controls.Add(this.guna2PictureBox1);
-            this.guna2Panel2.Location = new System.Drawing.Point(3, 4);
-            this.guna2Panel2.Name = "guna2Panel2";
-            this.guna2Panel2.Size = new System.Drawing.Size(250, 64);
-            this.guna2Panel2.TabIndex = 2;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(60, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 31);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "مدرستي";
-            // 
-            // treeView1
-            // 
-            this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.ImageIndex = 0;
-            this.treeView1.ImageList = this.imageList1;
-            this.treeView1.Location = new System.Drawing.Point(3, 130);
-            this.treeView1.Name = "treeView1";
-            treeNode1.Name = "Node10";
-            treeNode1.Text = "معلومات المدرسة";
-            treeNode2.Name = "Node11";
-            treeNode2.Text = "السنوات الدراسية";
-            treeNode3.Name = "Node12";
-            treeNode3.Text = "المراحل والصفوف";
-            treeNode4.ImageKey = "icon-14.png";
-            treeNode4.Name = "Node0";
-            treeNode4.Text = "الإعدادات";
-            treeNode5.Name = "Node14";
-            treeNode5.Text = "جميع المدرسين";
-            treeNode6.ImageKey = "icon-3.png";
-            treeNode6.Name = "Node1";
-            treeNode6.Text = "المدرسن";
-            treeNode7.Name = "Node15";
-            treeNode7.Text = "جميع الطلاب";
-            treeNode8.Name = "Node16";
-            treeNode8.Text = "إضافة طالب";
-            treeNode9.Name = "Node17";
-            treeNode9.Text = "عن الطلاب";
-            treeNode10.ImageKey = "icon-10.png";
-            treeNode10.Name = "Node2";
-            treeNode10.SelectedImageIndex = 9;
-            treeNode10.Text = "الطلاب";
-            treeNode11.ImageKey = "icon-4.png";
-            treeNode11.Name = "Node3";
-            treeNode11.SelectedImageIndex = 3;
-            treeNode11.Text = "أولياء الأمور";
-            treeNode12.ImageKey = "icon-18.png";
-            treeNode12.Name = "Node4";
-            treeNode12.SelectedImageIndex = 16;
-            treeNode12.Text = "التقويم";
-            treeNode13.ImageKey = "icon-7.png";
-            treeNode13.Name = "Node5";
-            treeNode13.Text = "الأختبارات";
-            treeNode14.ImageKey = "icon-8.png";
-            treeNode14.Name = "Node6";
-            treeNode14.Text = "العطل";
-            treeNode15.ImageKey = "icon-10.png";
-            treeNode15.Name = "Node7";
-            treeNode15.Text = "الحسابات";
-            treeNode16.ImageKey = "icon-17.png";
-            treeNode16.Name = "Node8";
-            treeNode16.Text = "المدونات";
-            treeNode17.ImageKey = "icon-20.png";
-            treeNode17.Name = "Node9";
-            treeNode17.Text = "الإدارة";
-            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode6,
-            treeNode10,
-            treeNode11,
-            treeNode12,
-            treeNode13,
-            treeNode14,
-            treeNode15,
-            treeNode16,
-            treeNode17});
-            this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.treeView1.RightToLeftLayout = true;
-            this.treeView1.SelectedImageIndex = 0;
-            this.treeView1.Size = new System.Drawing.Size(250, 682);
-            this.treeView1.TabIndex = 3;
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            // 
-            // guna2Panel3
-            // 
-            this.guna2Panel3.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.guna2Panel3.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel3.BorderRadius = 2;
-            this.guna2Panel3.BorderThickness = 1;
-            this.guna2Panel3.Controls.Add(this.label3);
-            this.guna2Panel3.Controls.Add(this.guna2PictureBox2);
-            this.guna2Panel3.Location = new System.Drawing.Point(3, 67);
-            this.guna2Panel3.Name = "guna2Panel3";
-            this.guna2Panel3.Size = new System.Drawing.Size(250, 64);
-            this.guna2Panel3.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(24, 18);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 31);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "الصفحة الرئيسية";
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(255, 72);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1066, 727);
-            this.panel1.TabIndex = 4;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
-            // guna2PictureBox2
-            // 
-            this.guna2PictureBox2.Image = global::MySchool.Properties.Resources.icon_1;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(189, 9);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(49, 43);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox2.TabIndex = 5;
-            this.guna2PictureBox2.TabStop = false;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::MySchool.Properties.Resources.logo1;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(173, 5);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(74, 56);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox1.TabIndex = 5;
-            this.guna2PictureBox1.TabStop = false;
-            // 
             // guna2PictureBox5
             // 
             this.guna2PictureBox5.BorderRadius = 8;
@@ -308,6 +166,166 @@
             this.guna2PictureBox3.TabIndex = 5;
             this.guna2PictureBox3.TabStop = false;
             // 
+            // guna2Panel2
+            // 
+            this.guna2Panel2.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.guna2Panel2.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel2.BorderRadius = 2;
+            this.guna2Panel2.BorderThickness = 1;
+            this.guna2Panel2.Controls.Add(this.label1);
+            this.guna2Panel2.Controls.Add(this.guna2PictureBox1);
+            this.guna2Panel2.Location = new System.Drawing.Point(3, 4);
+            this.guna2Panel2.Name = "guna2Panel2";
+            this.guna2Panel2.Size = new System.Drawing.Size(250, 64);
+            this.guna2Panel2.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(60, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(86, 31);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "مدرستي";
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::MySchool.Properties.Resources.logo1;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(173, 5);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(74, 56);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox1.TabIndex = 5;
+            this.guna2PictureBox1.TabStop = false;
+            // 
+            // treeView1
+            // 
+            this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView1.ImageIndex = 0;
+            this.treeView1.ImageList = this.imageList1;
+            this.treeView1.Location = new System.Drawing.Point(3, 130);
+            this.treeView1.Name = "treeView1";
+            treeNode1.Name = "Node10";
+            treeNode1.Text = "معلومات المدرسة";
+            treeNode2.Name = "Node11";
+            treeNode2.Text = "السنوات الدراسية";
+            treeNode3.Name = "Node12";
+            treeNode3.Text = "المراحل والصفوف";
+            treeNode4.ImageKey = "icon-14.png";
+            treeNode4.Name = "Node0";
+            treeNode4.Text = "الإعدادات";
+            treeNode5.Name = "Node14";
+            treeNode5.Text = "جميع المدرسين";
+            treeNode6.ImageKey = "icon-3.png";
+            treeNode6.Name = "Node1";
+            treeNode6.Text = "المدرسن";
+            treeNode7.Name = "Node15";
+            treeNode7.Text = "جميع الطلاب";
+            treeNode8.Name = "Node16";
+            treeNode8.Text = "إضافة طالب";
+            treeNode9.Name = "Node17";
+            treeNode9.Text = "عن الطلاب";
+            treeNode10.ImageKey = "icon-10.png";
+            treeNode10.Name = "Node2";
+            treeNode10.SelectedImageIndex = 9;
+            treeNode10.Text = "الطلاب";
+            treeNode11.Name = "Node4";
+            treeNode11.Text = "عرض المواد";
+            treeNode12.Name = "Node5";
+            treeNode12.Text = "إضافة درجات";
+            treeNode13.Name = "Node1";
+            treeNode13.Text = "إضافة مادة";
+            treeNode14.Name = "Node0";
+            treeNode14.Text = "المواد الدراسية";
+            treeNode15.ImageKey = "icon-4.png";
+            treeNode15.Name = "Node3";
+            treeNode15.SelectedImageIndex = 3;
+            treeNode15.Text = "أولياء الأمور";
+            treeNode16.ImageKey = "icon-18.png";
+            treeNode16.Name = "Node4";
+            treeNode16.SelectedImageIndex = 16;
+            treeNode16.Text = "التقويم";
+            treeNode17.ImageKey = "icon-7.png";
+            treeNode17.Name = "Node5";
+            treeNode17.Text = "الأختبارات";
+            treeNode18.ImageKey = "icon-8.png";
+            treeNode18.Name = "Node6";
+            treeNode18.Text = "العطل";
+            treeNode19.ImageKey = "icon-10.png";
+            treeNode19.Name = "Node7";
+            treeNode19.Text = "الحسابات";
+            treeNode20.ImageKey = "icon-17.png";
+            treeNode20.Name = "Node8";
+            treeNode20.Text = "المدونات";
+            treeNode21.ImageKey = "icon-20.png";
+            treeNode21.Name = "Node9";
+            treeNode21.Text = "الإدارة";
+            this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode6,
+            treeNode10,
+            treeNode14,
+            treeNode15,
+            treeNode16,
+            treeNode17,
+            treeNode18,
+            treeNode19,
+            treeNode20,
+            treeNode21});
+            this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.treeView1.RightToLeftLayout = true;
+            this.treeView1.SelectedImageIndex = 0;
+            this.treeView1.Size = new System.Drawing.Size(250, 682);
+            this.treeView1.TabIndex = 3;
+            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+            // 
+            // guna2Panel3
+            // 
+            this.guna2Panel3.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.guna2Panel3.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel3.BorderRadius = 2;
+            this.guna2Panel3.BorderThickness = 1;
+            this.guna2Panel3.Controls.Add(this.label3);
+            this.guna2Panel3.Controls.Add(this.guna2PictureBox2);
+            this.guna2Panel3.Location = new System.Drawing.Point(3, 67);
+            this.guna2Panel3.Name = "guna2Panel3";
+            this.guna2Panel3.Size = new System.Drawing.Size(250, 64);
+            this.guna2Panel3.TabIndex = 3;
+            this.guna2Panel3.Click += new System.EventHandler(this.MainClick);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(24, 18);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(161, 31);
+            this.label3.TabIndex = 6;
+            this.label3.Text = "الصفحة الرئيسية";
+            this.label3.Click += new System.EventHandler(this.TextClick);
+            // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Image = global::MySchool.Properties.Resources.icon_1;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(189, 9);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(49, 43);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox2.TabIndex = 5;
+            this.guna2PictureBox2.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(257, 72);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1066, 727);
+            this.panel1.TabIndex = 4;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
+            // 
             // Dashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -320,20 +338,21 @@
             this.Controls.Add(this.guna2Panel2);
             this.Controls.Add(this.guna2Panel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
             this.Name = "Dashboard";
             this.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.RightToLeftLayout = true;
             this.Text = "Dashboard";
             this.guna2Panel1.ResumeLayout(false);
-            this.guna2Panel2.ResumeLayout(false);
-            this.guna2Panel2.PerformLayout();
-            this.guna2Panel3.ResumeLayout(false);
-            this.guna2Panel3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox5)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
+            this.guna2Panel2.ResumeLayout(false);
+            this.guna2Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
+            this.guna2Panel3.ResumeLayout(false);
+            this.guna2Panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

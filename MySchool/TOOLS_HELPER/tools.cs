@@ -12,11 +12,8 @@ namespace MySchool.TOOLS_HELPER
     internal class tools
     {
 
-        public void StyleDataGridView(Guna2DataGridView x, Guna2TabControl tabControl)
+        public void StyleDataGridView(Guna2DataGridView x)
         {
-            tabControl.RightToLeftLayout = true;
-            tabControl.RightToLeft = RightToLeft.Yes;
-
             // DataGridView properties
             x.AllowUserToAddRows = false;
             x.AllowUserToDeleteRows = false;

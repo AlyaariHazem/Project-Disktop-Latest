@@ -32,27 +32,28 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlDashboard));
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.guna2Panel1 = new Guna.UI2.WinForms.Guna2Panel();
+            this.label5 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel2 = new Guna.UI2.WinForms.Guna2Panel();
             this.label2 = new System.Windows.Forms.Label();
+            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel3 = new Guna.UI2.WinForms.Guna2Panel();
             this.label4 = new System.Windows.Forms.Label();
+            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel4 = new Guna.UI2.WinForms.Guna2Panel();
             this.label3 = new System.Windows.Forms.Label();
+            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel5 = new Guna.UI2.WinForms.Guna2Panel();
             this.guna2Panel6 = new Guna.UI2.WinForms.Guna2Panel();
-            this.guna2PictureBox3 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox4 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox2 = new Guna.UI2.WinForms.Guna2PictureBox();
-            this.guna2PictureBox1 = new Guna.UI2.WinForms.Guna2PictureBox();
             this.guna2Panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.guna2Panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
             this.guna2Panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
             this.guna2Panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList1
@@ -70,6 +71,7 @@
             this.guna2Panel1.BorderColor = System.Drawing.Color.Black;
             this.guna2Panel1.BorderRadius = 5;
             this.guna2Panel1.BorderThickness = 1;
+            this.guna2Panel1.Controls.Add(this.label5);
             this.guna2Panel1.Controls.Add(this.label1);
             this.guna2Panel1.Controls.Add(this.guna2PictureBox1);
             this.guna2Panel1.Location = new System.Drawing.Point(806, 16);
@@ -77,15 +79,37 @@
             this.guna2Panel1.Size = new System.Drawing.Size(252, 181);
             this.guna2Panel1.TabIndex = 1;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(80, 12);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(20, 24);
+            this.label5.TabIndex = 3;
+            this.label5.Text = "0";
+            this.label5.Click += new System.EventHandler(this.label5_Click);
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(89, 15);
+            this.label1.Location = new System.Drawing.Point(148, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(141, 24);
+            this.label1.Size = new System.Drawing.Size(81, 24);
             this.label1.TabIndex = 2;
-            this.label1.Text = "عدد الطلاب600000";
+            this.label1.Text = "عدد الطلاب";
+            // 
+            // guna2PictureBox1
+            // 
+            this.guna2PictureBox1.Image = global::MySchool.Properties.Resources.dash_1;
+            this.guna2PictureBox1.ImageRotate = 0F;
+            this.guna2PictureBox1.Location = new System.Drawing.Point(14, 59);
+            this.guna2PictureBox1.Name = "guna2PictureBox1";
+            this.guna2PictureBox1.Size = new System.Drawing.Size(123, 102);
+            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox1.TabIndex = 0;
+            this.guna2PictureBox1.TabStop = false;
             // 
             // guna2Panel2
             // 
@@ -110,6 +134,17 @@
             this.label2.TabIndex = 2;
             this.label2.Text = "عدد المعلمين12000";
             // 
+            // guna2PictureBox2
+            // 
+            this.guna2PictureBox2.Image = global::MySchool.Properties.Resources.dash_2;
+            this.guna2PictureBox2.ImageRotate = 0F;
+            this.guna2PictureBox2.Location = new System.Drawing.Point(13, 52);
+            this.guna2PictureBox2.Name = "guna2PictureBox2";
+            this.guna2PictureBox2.Size = new System.Drawing.Size(131, 111);
+            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox2.TabIndex = 0;
+            this.guna2PictureBox2.TabStop = false;
+            // 
             // guna2Panel3
             // 
             this.guna2Panel3.BackColor = System.Drawing.Color.White;
@@ -132,6 +167,17 @@
             this.label4.Size = new System.Drawing.Size(196, 24);
             this.label4.TabIndex = 2;
             this.label4.Text = "$إجمالي الفلوس200000000";
+            // 
+            // guna2PictureBox4
+            // 
+            this.guna2PictureBox4.Image = global::MySchool.Properties.Resources.dash_4;
+            this.guna2PictureBox4.ImageRotate = 0F;
+            this.guna2PictureBox4.Location = new System.Drawing.Point(13, 41);
+            this.guna2PictureBox4.Name = "guna2PictureBox4";
+            this.guna2PictureBox4.Size = new System.Drawing.Size(139, 111);
+            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.guna2PictureBox4.TabIndex = 0;
+            this.guna2PictureBox4.TabStop = false;
             // 
             // guna2Panel4
             // 
@@ -157,28 +203,6 @@
             this.label3.Text = "عدد أولياء الأمور1022";
             this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
-            // guna2Panel5
-            // 
-            this.guna2Panel5.BackColor = System.Drawing.Color.White;
-            this.guna2Panel5.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel5.BorderRadius = 5;
-            this.guna2Panel5.BorderThickness = 1;
-            this.guna2Panel5.Location = new System.Drawing.Point(543, 214);
-            this.guna2Panel5.Name = "guna2Panel5";
-            this.guna2Panel5.Size = new System.Drawing.Size(516, 456);
-            this.guna2Panel5.TabIndex = 1;
-            // 
-            // guna2Panel6
-            // 
-            this.guna2Panel6.BackColor = System.Drawing.Color.White;
-            this.guna2Panel6.BorderColor = System.Drawing.Color.Black;
-            this.guna2Panel6.BorderRadius = 5;
-            this.guna2Panel6.BorderThickness = 1;
-            this.guna2Panel6.Location = new System.Drawing.Point(7, 214);
-            this.guna2Panel6.Name = "guna2Panel6";
-            this.guna2Panel6.Size = new System.Drawing.Size(516, 456);
-            this.guna2Panel6.TabIndex = 1;
-            // 
             // guna2PictureBox3
             // 
             this.guna2PictureBox3.Image = global::MySchool.Properties.Resources.dash_3;
@@ -190,38 +214,27 @@
             this.guna2PictureBox3.TabIndex = 0;
             this.guna2PictureBox3.TabStop = false;
             // 
-            // guna2PictureBox4
+            // guna2Panel5
             // 
-            this.guna2PictureBox4.Image = global::MySchool.Properties.Resources.dash_4;
-            this.guna2PictureBox4.ImageRotate = 0F;
-            this.guna2PictureBox4.Location = new System.Drawing.Point(13, 41);
-            this.guna2PictureBox4.Name = "guna2PictureBox4";
-            this.guna2PictureBox4.Size = new System.Drawing.Size(139, 111);
-            this.guna2PictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox4.TabIndex = 0;
-            this.guna2PictureBox4.TabStop = false;
+            this.guna2Panel5.BackColor = System.Drawing.Color.White;
+            this.guna2Panel5.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel5.BorderRadius = 5;
+            this.guna2Panel5.BorderThickness = 1;
+            this.guna2Panel5.Location = new System.Drawing.Point(543, 214);
+            this.guna2Panel5.Name = "guna2Panel5";
+            this.guna2Panel5.Size = new System.Drawing.Size(516, 510);
+            this.guna2Panel5.TabIndex = 1;
             // 
-            // guna2PictureBox2
+            // guna2Panel6
             // 
-            this.guna2PictureBox2.Image = global::MySchool.Properties.Resources.dash_2;
-            this.guna2PictureBox2.ImageRotate = 0F;
-            this.guna2PictureBox2.Location = new System.Drawing.Point(13, 52);
-            this.guna2PictureBox2.Name = "guna2PictureBox2";
-            this.guna2PictureBox2.Size = new System.Drawing.Size(131, 111);
-            this.guna2PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox2.TabIndex = 0;
-            this.guna2PictureBox2.TabStop = false;
-            // 
-            // guna2PictureBox1
-            // 
-            this.guna2PictureBox1.Image = global::MySchool.Properties.Resources.dash_1;
-            this.guna2PictureBox1.ImageRotate = 0F;
-            this.guna2PictureBox1.Location = new System.Drawing.Point(14, 59);
-            this.guna2PictureBox1.Name = "guna2PictureBox1";
-            this.guna2PictureBox1.Size = new System.Drawing.Size(123, 102);
-            this.guna2PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.guna2PictureBox1.TabIndex = 0;
-            this.guna2PictureBox1.TabStop = false;
+            this.guna2Panel6.BackColor = System.Drawing.Color.White;
+            this.guna2Panel6.BorderColor = System.Drawing.Color.Black;
+            this.guna2Panel6.BorderRadius = 5;
+            this.guna2Panel6.BorderThickness = 1;
+            this.guna2Panel6.Location = new System.Drawing.Point(7, 214);
+            this.guna2Panel6.Name = "guna2Panel6";
+            this.guna2Panel6.Size = new System.Drawing.Size(516, 510);
+            this.guna2Panel6.TabIndex = 1;
             // 
             // UserControlDashboard
             // 
@@ -238,16 +251,16 @@
             this.Size = new System.Drawing.Size(1066, 727);
             this.guna2Panel1.ResumeLayout(false);
             this.guna2Panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.guna2Panel2.ResumeLayout(false);
             this.guna2Panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
             this.guna2Panel3.ResumeLayout(false);
             this.guna2Panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
             this.guna2Panel4.ResumeLayout(false);
             this.guna2Panel4.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guna2PictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -269,5 +282,6 @@
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel5;
         private Guna.UI2.WinForms.Guna2Panel guna2Panel6;
+        private System.Windows.Forms.Label label5;
     }
 }
