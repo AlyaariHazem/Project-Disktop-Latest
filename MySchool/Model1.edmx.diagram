@@ -42,6 +42,8 @@
         <AssociationConnector Association="SchoolDBModel.FK_TeacherSubjectStudent_Teachers_TeacherID" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolDBModel.StudentClass" ManuallyRouted="false" />
         <AssociationConnector Association="SchoolDBModel.TeacherStudents" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="SchoolDBModel.Grades" Width="1.5" PointX="7.625" PointY="14.25" />
+        <AssociationConnector Association="SchoolDBModel.FK_Grades_Students" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
