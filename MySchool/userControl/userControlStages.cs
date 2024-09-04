@@ -6,7 +6,8 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
 using System.Xml.Linq;
-
+using MySchool.TOOLS_HELPER;
+using System.Collections.Generic;
 namespace MySchool.userControl
 {
     public partial class userControlStages : UserControl
@@ -15,17 +16,20 @@ namespace MySchool.userControl
         private int? currentEditingStageID = null;
         private int? currentEditingClassID = null;
         private int? currentEditingDivisionID = null;
-
+        private tools tool=new tools();
         public userControlStages()
         {
             InitializeComponent();
             InitializeDataGridViewColumns();
             LoadData();
 
-            StyleDataGridView(guna2DataGridView1);
-            StyleDataGridView(guna2DataGridView2);
-            StyleDataGridView(guna2DataGridView3);
 
+
+            tool.StyleDataGridView(guna2DataGridView1, guna2TabControl1);
+            tool.StyleDataGridView(guna2DataGridView2, guna2TabControl1);
+            tool.StyleDataGridView(guna2DataGridView3, guna2TabControl1);
+
+         
             guna2DataGridView2.Columns["StudentCount"].Width = 150;
 
             // Attach event handlers for each DataGridView
@@ -38,129 +42,111 @@ namespace MySchool.userControl
                 .Select(stage => stage.StageName)
                 .ToArray();
 
-            guna2ComboBox2.Items.Clear(); 
-            guna2ComboBox2.Items.AddRange(stageNames);
+            tool.FillComboBox(guna2ComboBox2, stageNames);
 
             // Retrieve all ClassNames from the Classes table and store them in a string array
             var ClassNames = db.Classes
                 .Select(c => c.ClassName)
                 .ToArray();
 
-            guna2ComboBox1.Items.Clear(); // Clear previous items
-            guna2ComboBox1.Items.AddRange(ClassNames);
+            tool.FillComboBox(guna2ComboBox1, ClassNames);
+
         }
+
+
 
         private void InitializeDataGridViewColumns()
         {
-            // this for Stages
-            guna2DataGridView2.Columns.Clear();
-            guna2DataGridView2.Columns.Add("StageID", "#");
-            guna2DataGridView2.Columns.Add("StageName", "اسم المرحلة");
-            guna2DataGridView2.Columns.Add("Classes", "الصفوف");
-            guna2DataGridView2.Columns.Add("StudentCount", "إجمالي الطلاب");
-            guna2DataGridView2.Columns.Add("Note", "الملاحظة");
-            AddButtonColumns();
-            // this for Classes
-            guna2DataGridView3.Columns.Clear();
-            guna2DataGridView3.Columns.Add("ClassID", "#");
-            guna2DataGridView3.Columns.Add("ClassName", "الصف");
-            guna2DataGridView3.Columns.Add("StageName", "المرحلة");
-            guna2DataGridView3.Columns.Add("DivisionName", "الشعب");
-            guna2DataGridView3.Columns.Add("Active", "الحالة");
+            
+            tool.InitializeDataGridView(guna2DataGridView2, new Dictionary<string, string>
+    {
+        {"StageID", "#"},
+        {"StageName", "اسم المرحلة"},
+        {"Classes", "الصفوف"},
+        {"StudentCount", "إجمالي الطلاب"},
+        {"Note", "الملاحظة"}
+    }, new Dictionary<string, (string, string)>
+    {
+        {"Delete", ("حذف", "حذف")},
+        {"Edit", ("تعديل", "تعديل")}
+    });
 
-            var buttonColumn3 = new DataGridViewButtonColumn
-            {
-                Name = "Delete",
-                HeaderText = "حذف",
-                Text = "حذف",
-                UseColumnTextForButtonValue = true,
-                Width = 80
-            };
-            guna2DataGridView3.Columns.Add(buttonColumn3);
-            var buttonColumnedit = new DataGridViewButtonColumn
-            {
-                Name = "Edit",
-                HeaderText = "تعديل",
-                Text = "تعديل",
-                UseColumnTextForButtonValue = true,
-                Width = 80
-            };
-            guna2DataGridView3.Columns.Add(buttonColumnedit);
-            //this for division
-            guna2DataGridView1.Columns.Clear();
-            guna2DataGridView1.Columns.Add("DivisionID", "#");
-            guna2DataGridView1.Columns.Add("DivisionName", "الشعبة");
-            guna2DataGridView1.Columns.Add("className", "الصف");
-            guna2DataGridView1.Columns.Add("SUMStudent", "إجمالي الطلاب");
-            var buttonColumn1 = new DataGridViewButtonColumn
-            {
-                Name = "Delete",
-                HeaderText = "حذف",
-                Text = "حذف",
-                UseColumnTextForButtonValue = true,
-                Width = 80
-            };
-            guna2DataGridView1.Columns.Add(buttonColumn1);
-            var buttonColumnedit1 = new DataGridViewButtonColumn
-            {
-                Name = "Edit",
-                HeaderText = "تعديل",
-                Text = "تعديل",
-                UseColumnTextForButtonValue = true,
-                Width = 80
-            };
-            guna2DataGridView1.Columns.Add(buttonColumnedit1);
+
+            // Initialize Guna2DataGridView3
+    tool.InitializeDataGridView(guna2DataGridView3, new Dictionary<string, string>
+    {
+        {"ClassID", "#"},
+        {"ClassName", "الصف"},
+        {"StageName", "المرحلة"},
+        {"DivisionName", "الشعب"},
+        {"Active", "الحالة"}
+    }, new Dictionary<string, (string, string)>
+    {
+        {"Delete", ("حذف", "حذف")},
+        {"Edit", ("تعديل", "تعديل")}
+    });
+
+            // Initialize Guna2DataGridView1
+            tool.InitializeDataGridView(guna2DataGridView1, new Dictionary<string, string>
+    {
+        {"DivisionID", "#"},
+        {"DivisionName", "الشعبة"},
+        {"className", "الصف"},
+        {"SUMStudent", "إجمالي الطلاب"}
+    }, new Dictionary<string, (string, string)>
+    {
+        {"Delete", ("حذف", "حذف")},
+        {"Edit", ("تعديل", "تعديل")}
+    });
+
+
         }
 
-        private void StyleDataGridView(Guna2DataGridView x)
-        {
-            guna2TabControl1.RightToLeft =RightToLeft.Yes;
-            guna2TabControl1.RightToLeftLayout = true;
-
-            // DataGridView properties
-            x.AllowUserToAddRows = false;
-            x.AllowUserToDeleteRows = false;
-            x.AllowUserToResizeColumns = false;
-            x.AllowUserToResizeRows = false;
-            x.ReadOnly = false;
-            x.MultiSelect = false;
-            x.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-            x.GridColor = Color.LightGray;
-            x.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            x.DefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
-
-            x.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            x.ColumnHeadersHeight = 40;
-            x.ColumnHeadersDefaultCellStyle.Font = new Font("Segoe UI", 10, FontStyle.Bold);
-            x.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            x.EnableHeadersVisualStyles = true;
-
-            x.DefaultCellStyle.BackColor = Color.White;
-            x.DefaultCellStyle.ForeColor = Color.Black;
-            x.DefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            x.DefaultCellStyle.SelectionForeColor = Color.Black;
-            x.DefaultCellStyle.Font = new Font("Segoe UI", 9);
-
-            x.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
-            x.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-
-            x.RowTemplate.Height = 60;
-            x.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-
-            x.BorderStyle = BorderStyle.None;
-            x.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            x.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            x.BackgroundColor = Color.WhiteSmoke;
-        }
+      
 
         private void LoadData()
         {
-            guna2DataGridView2.Rows.Clear();
-            guna2DataGridView3.Rows.Clear();
-            guna2DataGridView1.Rows.Clear();
+            // Load data for Guna2DataGridView3 (Classes)
+            var classData = db.Classes
+                .Select(s => new
+                {
+                    s.ClassID,
+                    s.ClassName,
+                    StageName = s.Stages.StageName,
+                    DivisionCount = s.Divisions.Count(),
+                    StudentCount = s.Divisions.SelectMany(c => c.Students).Count(),
+                    classActive = s.IsActive
+                })
+                .ToList();
 
+            tool.LoadDataIntoDataGridView(guna2DataGridView3, classData, _class => new object[]
+            {
+        _class.ClassID,
+        _class.ClassName,
+        _class.StageName,
+        _class.DivisionCount,
+        _class.classActive
+            });
+
+            // Load data for Guna2DataGridView1 (Divisions)
+            var divisionData = db.Divisions
+                .Select(d => new
+                {
+                    d.DivisionID,
+                    d.DivisionName,
+                    ClassName = d.Classes.ClassName,
+                    StudentCount = d.Students.Count()
+                })
+                .ToList();
+
+            tool.LoadDataIntoDataGridView(guna2DataGridView1, divisionData, division => new object[]
+            {
+        division.DivisionID,
+        division.DivisionName,
+        division.ClassName,
+        division.StudentCount            });
+
+            // Load data for Guna2DataGridView2 (Stages)
             var stagesData = db.Stages
                 .Select(s => new
                 {
@@ -172,64 +158,27 @@ namespace MySchool.userControl
                 })
                 .ToList();
 
-            var ClassData = db.Classes
-                .Select(s => new
-                {
-                    s.ClassID,
-                    s.ClassName,
-                    StageName = s.Stages.StageName,
-                    DivisionCount = s.Divisions.Count(),
-                    StudentCount = s.Divisions.SelectMany(c => c.Students).Count(),
-                    classActive=s.IsActive
-                })
-                .ToList();
-            var DivisionData = db.Divisions
-                .Select(D => new
-                {
-                    D.DivisionID,
-                    D.DivisionName,
-                    ClassName = D.Classes.ClassName,
-                    StudentCount=D.Students.Count(), 
-                });
-            foreach ( var division in DivisionData )
+            tool.LoadDataIntoDataGridView(guna2DataGridView2, stagesData, stage => new object[]
             {
-                var index = guna2DataGridView1.Rows.Add(division.DivisionID, division.DivisionName, division.ClassName, string.Join(", ", division.StudentCount));
-                guna2DataGridView1.Rows[index].Height = 35;
-            }
-            foreach (var _class in ClassData)
-            {
-                var index = guna2DataGridView3.Rows.Add(_class.ClassID,_class.ClassName, _class.StageName, string.Join(", ", _class.DivisionCount), _class.classActive);
-                guna2DataGridView3.Rows[index].Height = 35;
-            }
+        stage.StageID,
+        stage.StageName,
+        stage.Classes,
+        stage.StudentCount,
+        stage.Note
+            });
 
-            foreach (var stage in stagesData)
-            {
-                var index = guna2DataGridView2.Rows.Add(stage.StageID, stage.StageName, string.Join(", ", stage.Classes), stage.StudentCount, stage.Note);
-                guna2DataGridView2.Rows[index].Height = 35;
-            }
+
         }
 
         private void AddButtonColumns()
         {
            
-                AddButtonColumn("Edit", "تعديل", "تعديل");
-                AddButtonColumn("Delete", "حـذف", "حـذف");
+                tool.AddButtonColumn(guna2DataGridView2,"Edit", "تعديل", "تعديل");
+                tool.AddButtonColumn(guna2DataGridView2,"Delete", "حـذف", "حـذف");
 
         }
 
-        private void AddButtonColumn(string name, string headerText, string buttonText)
-        {
-            var buttonColumn = new DataGridViewButtonColumn
-            {
-                Name = name,
-                HeaderText = headerText,
-                Text = buttonText,
-                UseColumnTextForButtonValue = true,
-                Width = 80
-            };
-            guna2DataGridView2.Columns.Add(buttonColumn);
-        }
-        
+       
         private void guna2DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
@@ -371,15 +320,7 @@ namespace MySchool.userControl
 
         private void ResetForm()
         {
-            guna2TextBox1.Text = string.Empty;
-            guna2TextBox4.Text = string.Empty;
-            guna2TextBox2.Text = string.Empty;
-            guna2TextBox3.Text = string.Empty;
-            guna2ComboBox2.Text= string.Empty;
-            guna2ComboBox1.Text = string.Empty;
-            guna2TileButton2.Text = "إضافة+"; // Reset to Add mode
-            guna2TileButton3.Text = "إضافة+"; // Reset to Add mode
-            guna2TileButton1.Text = "إضافة+"; // Reset to Add mode
+            tool.ResetForms(this);
             currentEditingStageID = null;
             currentEditingClassID = null;
             
@@ -758,5 +699,9 @@ namespace MySchool.userControl
             } 
         }
 
+
+
     }
+
+
 }
