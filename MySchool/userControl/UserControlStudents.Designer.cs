@@ -233,7 +233,7 @@
             this.Controls.Add(this.guna2TextBox2);
             this.Controls.Add(this.guna2TextBox1);
             this.Name = "UserControlStudents";
-            this.Size = new System.Drawing.Size(1056, 683);
+            this.Size = new System.Drawing.Size(1066, 727);
             ((System.ComponentModel.ISupportInitialize)(this.guna2DataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

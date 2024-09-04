@@ -15,11 +15,7 @@ namespace MySchool.userControl
         public UserControlAddStudent()
         {
             InitializeComponent();
-            guna2TabControl1.RightToLeft = RightToLeft.Yes;
-            guna2TabControl1.RightToLeftLayout = true;
-            guna2TabControl1.Alignment = TabAlignment.Top;
             
-
         }
 
         private void UserControlAddStudent_Load(object sender, EventArgs e)

@@ -237,6 +237,7 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <None Include="Resources\user-061.jpg" />
     <None Include="Resources\Hazem.jpg" />
     <None Include="Resources\icon-23.png" />
     <None Include="Resources\icon-22.png" />
