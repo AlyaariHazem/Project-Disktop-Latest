@@ -109,6 +109,7 @@
             // 
             // guna2Button1
             // 
+            this.guna2Button1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.guna2Button1.BorderRadius = 8;
             this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
             this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
@@ -117,9 +118,9 @@
             this.guna2Button1.FillColor = System.Drawing.Color.LimeGreen;
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(24, 7);
+            this.guna2Button1.Location = new System.Drawing.Point(25, 2);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(129, 45);
+            this.guna2Button1.Size = new System.Drawing.Size(129, 36);
             this.guna2Button1.TabIndex = 60;
             this.guna2Button1.Text = "حفظ";
             // 
@@ -338,7 +339,7 @@
             // 
             this.label24.AutoSize = true;
             this.label24.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label24.Location = new System.Drawing.Point(923, 61);
+            this.label24.Location = new System.Drawing.Point(917, 61);
             this.label24.Name = "label24";
             this.label24.Size = new System.Drawing.Size(108, 23);
             this.label24.TabIndex = 15;
