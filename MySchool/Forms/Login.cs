@@ -8,13 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Collections.Specialized.BitVector32;
 
 namespace MySchool.Forms
 {
     public partial class Login : Form
     {
        private readonly SchoolDBEntities db = new SchoolDBEntities();
-
+        public static int  userid;
         public Login()
         {
             InitializeComponent();
@@ -25,13 +26,18 @@ namespace MySchool.Forms
             string username=guna2TextBox1.Text;
             string password=guna2TextBox2.Text;
 
-            var user=db.Users.FirstOrDefaultAsync(u=>u.UserName == username && u.Password==password);
+           // var user=db.Users.FirstOrDefaultAsync(u=>u.UserName == username && u.Password==password);
 
+            var user = db.Users.FirstOrDefault(u => u.UserName == username && u.Password == password);
+            int usid =user.UserID;
             if (user != null)
             {
-                Dashboard dashboard = new Dashboard();
-                dashboard.Show();
-                this.Visible = false;
+                // Store the UserId after successful login
+                userid = usid;
+                // Open the Dashboard form
+              Dashboard dashboard = new Dashboard();
+               dashboard.Show();
+             this.Visible = false;
             }
             else
             {

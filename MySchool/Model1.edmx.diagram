@@ -44,7 +44,7 @@
         <AssociationConnector Association="SchoolDBModel.TeacherStudents" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SchoolDBModel.Grades" Width="1.5" PointX="7.625" PointY="14.25" />
         <AssociationConnector Association="SchoolDBModel.FK_Grades_Students" />
-      </Diagram>
+        </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
 </edmx:Edmx>

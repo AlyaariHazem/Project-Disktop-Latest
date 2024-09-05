@@ -9,106 +9,172 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySchool.TOOLS_HELPER;
+using static Guna.UI2.Native.WinApi;
+using System.IO;
+using System.Deployment.Internal;
 
 namespace MySchool.userControl
 {
     public partial class UserControlStudents : UserControl
     {
+        private readonly SchoolDBEntities db = new SchoolDBEntities();
+
+        private tools tool=new tools();
         public UserControlStudents()
         {
             InitializeComponent();
-            StyleDataGridView(guna2DataGridView1);
+            tool.StyleDataGridView(guna2DataGridView1); 
             InitializeDataGridViewColumns();
+            loaddata();
         }
 
-        private void InitializeDataGridViewColumns()
-        {
-            // this for Stages
-            guna2DataGridView1.Columns.Clear();
-            guna2DataGridView1.Columns.Add("StudentID", "#");
-            guna2DataGridView1.Columns.Add("StudentName", "اسم الطالب");
-            guna2DataGridView1.Columns.Add("Stage", "المرحلة");
-            guna2DataGridView1.Columns.Add("Class1", "الصـف");
-            guna2DataGridView1.Columns.Add("Division", "الشعبة");
-            guna2DataGridView1.Columns.Add("Age", "العمر");
-            guna2DataGridView1.Columns.Add("Type", "النوع");
-            guna2DataGridView1.Columns.Add("HireDate", "تاريخ التسجيل");
-            
-
-            var buttonColumn3 = new DataGridViewButtonColumn
-            {
-                Name = "Delete",
-                HeaderText = "حذف",
-                Text = "حذف",
-                UseColumnTextForButtonValue = true,
-                Width = 60
-            };
-            guna2DataGridView1.Columns.Add(buttonColumn3);
-            var buttonColumnedit = new DataGridViewButtonColumn
-            {
-                Name = "Edit",
-                HeaderText = "تعديل",
-                Text = "تعديل",
-                UseColumnTextForButtonValue = true,
-                Width = 60
-            };
-            guna2DataGridView1.Columns.Add(buttonColumnedit);
-            
-        }
-
-        private void StyleDataGridView(Guna2DataGridView x)
-        {
-            // DataGridView properties
-            x.AllowUserToAddRows = false;
-            x.AllowUserToDeleteRows = false;
-            x.AllowUserToResizeColumns = false;
-            x.AllowUserToResizeRows = false;
-            x.ReadOnly = false;
-            x.MultiSelect = false;
-            x.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-
-            x.GridColor = Color.LightGray;
-            x.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            x.DefaultCellStyle.Padding = new Padding(5, 5, 5, 5);
-
-            x.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            x.ColumnHeadersHeight = 40;
-            x.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            x.EnableHeadersVisualStyles = true;
-
-            x.DefaultCellStyle.BackColor = Color.White;
-            x.DefaultCellStyle.ForeColor = Color.Black;
-            x.DefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-            x.DefaultCellStyle.SelectionForeColor = Color.Black;
-            x.DefaultCellStyle.Font = new Font("Segoe UI", 9);
-
-            x.AlternatingRowsDefaultCellStyle.BackColor = Color.FromArgb(238, 239, 249);
-            x.AlternatingRowsDefaultCellStyle.SelectionBackColor = Color.FromArgb(231, 229, 255);
-
-            x.RowTemplate.Height = 60;
-            x.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
-
-            x.BorderStyle = BorderStyle.None;
-            x.CellBorderStyle = DataGridViewCellBorderStyle.SingleHorizontal;
-            x.DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-            x.BackgroundColor = Color.WhiteSmoke;
-        }
+      
+       
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            open_addstudent_control();
+
+        }
+
+
+        private void guna2DataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0) // Ensure it's not a header row
+            {
+                DataGridViewRow selectedRow = guna2DataGridView1.Rows[e.RowIndex]; if (guna2DataGridView1.Columns[e.ColumnIndex].Name == "Edit")
+                {
+                    
+
+                    int student_id = (int)guna2DataGridView1.Rows[e.RowIndex].Cells["StudentID"].Value;
+                    
+                    open_addstudent_control(student_id,1);
+
+                }
+                else if (guna2DataGridView1.Columns[e.ColumnIndex].Name == "Delete")
+                {
+
+              
+
+                    int studentId = (int)guna2DataGridView1.Rows[e.RowIndex].Cells["StudentID"].Value;
+                    var result = MessageBox.Show("هل أنت متأكد من أنك تريد حذف الطالب ؟", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                    if (result == DialogResult.Yes)
+                    {
+                        var student = db.Students.Find(studentId);
+                        if (student != null)
+                        {
+                            db.Students.Remove(student);
+                            db.SaveChanges();
+                            MessageBox.Show("ّ!تم حذف الطالب بنجاح");
+
+                            loaddata();
+                        }
+                        else
+                        {
+                            MessageBox.Show(".الطالب غير موجود");
+                        }
+                    }
+
+                }
+            }
+        }
+
+
+
+    
+
+        private void txtsearch_TextChanged(object sender, EventArgs e)
+        {
+            loaddata();
+        }
+
+
+
+        private void InitializeDataGridViewColumns()
+        {
+
+            tool.InitializeDataGridView(guna2DataGridView1, new Dictionary<string, string>
+    {
+        {"StudentID", "#"},
+        {"StudentName", "اسم الطالب "},
+        {"Stage", "المرحلة"},
+        {"Class1", "الصـف"},
+        {"Division", "الشعبة"},
+        {"Age", "تاريخ المبلاد"},
+        {"Type", "النوع"},
+
+    }, new Dictionary<string, (string, string)>
+    {
+        {"Delete", ("حذف", "حذف")},
+        {"Edit", ("تعديل", "تعديل")}
+    },
+     new Dictionary<string, string>
+    {
+        { "ProfilePicture", "الصورة" }
+    });
+
+
+
+        }
+
+
+        private void loaddata()
+        {
+
+            var students = db.Students
+                .Where(s => string.IsNullOrEmpty(txtsearch.Text) ||
+                            s.FullName_FirstName.ToLower().Contains(txtsearch.Text.ToLower()) ||
+                            s.FullName_SecondName.ToLower().Contains(txtsearch.Text.ToLower()) ||
+                            s.FullName_ThirdName.ToLower().Contains(txtsearch.Text.ToLower()) ||
+                            s.FullName_LastName.ToLower().Contains(txtsearch.Text.ToLower()) ||
+                            s.Divisions.DivisionName.ToLower().Contains(txtsearch.Text.ToLower()) ||
+                            s.Divisions.Classes.ClassName.ToLower().Contains(txtsearch.Text.ToLower()))
+                .Select(s => new
+                {
+                    studentid = s.StudentID,
+                    first_name = s.FullName_FirstName,
+                    socend_name = s.FullName_SecondName,
+                    third_name = s.FullName_ThirdName,
+                    last_name = s.FullName_LastName,
+                    stge_name = s.Divisions.Classes.Stages.StageName,
+                    class_name = s.Divisions.Classes.ClassName,
+                    div_name = s.Divisions.DivisionName,
+                    birth_ofdate = s.DateOfBirth,
+                    gurdian_name = s.Guardians.FullName_FirstName,
+                    gender = s.Gender,
+                    imag_path = s.URLImage
+                })
+                .ToList();
+
+            tool.LoadDataIntoDataGridView(guna2DataGridView1, students, _student => new object[]
+            {
+        _student.studentid,
+        _student.first_name + " " + _student.socend_name + " " + _student.third_name + " " + _student.last_name,
+        _student.stge_name,
+        _student.class_name,
+        _student.div_name,
+        _student.birth_ofdate,
+        _student.gender,
+        tool.LoadImage(_student.imag_path)
+            });
+        }
+
+
+
+        private void open_addstudent_control(int id = 0, int flag = 0)
+        {
             this.Controls.Clear();
 
-            UserControlAddStudent userControlAddStudent = new UserControlAddStudent();
+            UserControlAddStudent userControlAddStudent = new UserControlAddStudent(id, flag);
 
             userControlAddStudent.Dock = DockStyle.Fill;
 
             this.Controls.Add(userControlAddStudent);
         }
 
-        private void guna2DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
 
-        }
+
+
+
     }
 }

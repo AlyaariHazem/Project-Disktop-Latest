@@ -21,6 +21,7 @@ namespace MySchool
             this.TeacherSubjectStudent = new HashSet<TeacherSubjectStudent>();
             this.Classes = new HashSet<Classes>();
             this.Teachers = new HashSet<Teachers>();
+            this.Grades = new HashSet<Grades>();
         }
     
         public int StudentID { get; set; }
@@ -34,6 +35,9 @@ namespace MySchool
         public int GuardianID { get; set; }
         public int UserID { get; set; }
         public int DivisionID { get; set; }
+        public string URLImage { get; set; }
+        public Nullable<int> PayMent { get; set; }
+        public string PlaceOFBirth { get; set; }
     
         public virtual Divisions Divisions { get; set; }
         public virtual Guardians Guardians { get; set; }
@@ -46,5 +50,7 @@ namespace MySchool
         public virtual ICollection<Classes> Classes { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Teachers> Teachers { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Grades> Grades { get; set; }
     }
 }
