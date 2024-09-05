@@ -86,6 +86,7 @@ namespace MySchool.Forms
 
         }
 
+<<<<<<< HEAD
         private void MainClick(object sender, EventArgs e)
         {
             userControlDashboard();
@@ -104,6 +105,11 @@ namespace MySchool.Forms
         private void TextClick(object sender, EventArgs e)
         {
             userControlDashboard();
+=======
+        private void guna2PictureBox4_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+>>>>>>> salah5
         }
     }
 }

@@ -37,7 +37,11 @@ namespace MySchool
         public int DivisionID { get; set; }
         public string URLImage { get; set; }
         public Nullable<int> PayMent { get; set; }
+<<<<<<< HEAD
         public Nullable<System.DateTime> PlaceOFBirth { get; set; }
+=======
+        public string PlaceOFBirth { get; set; }
+>>>>>>> salah5
     
         public virtual Divisions Divisions { get; set; }
         public virtual Guardians Guardians { get; set; }
