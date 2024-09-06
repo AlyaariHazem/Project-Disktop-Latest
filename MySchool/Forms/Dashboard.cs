@@ -41,6 +41,10 @@ namespace MySchool.Forms
             else if(message.ToLower() == "جميع الطلاب")
             {
                 LoadUserControlStudents();
+            }  
+            else if(message.ToLower() == "جميع المدرسين")
+            {
+                LoadUserControlTetchers();
             }
         }
         private void LoadUserControlStage()
@@ -63,6 +67,18 @@ namespace MySchool.Forms
             userControlStudents.Dock = DockStyle.Fill;
 
             panel1.Controls.Add(userControlStudents);
+        }  
+        
+        
+        private void LoadUserControlTetchers()
+        {
+            panel1.Controls.Clear();
+
+            UserControlTeachers userControlTetcher= new UserControlTeachers();
+
+            userControlTetcher.Dock = DockStyle.Fill;
+
+            panel1.Controls.Add(userControlTetcher);
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
