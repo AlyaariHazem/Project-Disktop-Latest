@@ -173,12 +173,15 @@
     <Compile Include="userControl\userControlStages.Designer.cs">
       <DependentUpon>userControlStages.cs</DependentUpon>
     </Compile>
+<<<<<<< HEAD
     <Compile Include="userControl\UserControlSubjects.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="userControl\UserControlSubjects.Designer.cs">
       <DependentUpon>UserControlSubjects.cs</DependentUpon>
     </Compile>
+=======
+>>>>>>> salah5
     <Compile Include="userControl\UserControlTeachers.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -222,9 +225,12 @@
     <EmbeddedResource Include="userControl\userControlStages.resx">
       <DependentUpon>userControlStages.cs</DependentUpon>
     </EmbeddedResource>
+<<<<<<< HEAD
     <EmbeddedResource Include="userControl\UserControlSubjects.resx">
       <DependentUpon>UserControlSubjects.cs</DependentUpon>
     </EmbeddedResource>
+=======
+>>>>>>> salah5
     <EmbeddedResource Include="userControl\UserControlTeachers.resx">
       <DependentUpon>UserControlTeachers.cs</DependentUpon>
     </EmbeddedResource>

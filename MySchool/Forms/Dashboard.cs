@@ -38,6 +38,10 @@ namespace MySchool.Forms
             else if(message.ToLower() == "جميع الطلاب")
             {
                 LoadUserControlStudents();
+            }  
+            else if(message.ToLower() == "جميع المدرسين")
+            {
+                LoadUserControlTetchers();
             }
             else if (message.ToLower() == "عرض المواد")
             {
@@ -68,6 +72,18 @@ namespace MySchool.Forms
             userControlStudents.Dock = DockStyle.Fill;
 
             panel1.Controls.Add(userControlStudents);
+        }  
+        
+        
+        private void LoadUserControlTetchers()
+        {
+            panel1.Controls.Clear();
+
+            UserControlTeachers userControlTetcher= new UserControlTeachers();
+
+            userControlTetcher.Dock = DockStyle.Fill;
+
+            panel1.Controls.Add(userControlTetcher);
         }
 
         private void LoadUserControlSubject()
