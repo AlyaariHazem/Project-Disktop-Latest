@@ -31,7 +31,7 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Dashboard));
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("معلومات المدرسة");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("السنوات الدراسية");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("عرض المواد");
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("المراحل والصفوف");
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("الإعدادات", new System.Windows.Forms.TreeNode[] {
             treeNode1,
@@ -205,7 +205,7 @@
             treeNode1.Name = "Node10";
             treeNode1.Text = "معلومات المدرسة";
             treeNode2.Name = "Node11";
-            treeNode2.Text = "السنوات الدراسية";
+            treeNode2.Text = "عرض المواد";
             treeNode3.Name = "Node12";
             treeNode3.Text = "المراحل والصفوف";
             treeNode4.ImageKey = "icon-14.png";

@@ -46,6 +46,11 @@ namespace MySchool.Forms
             {
                 LoadUserControlTetchers();
             }
+            else if (message.ToLower() == "عرض المواد")
+            {
+                LoadUserControlSubject();
+            }
+
         }
         private void LoadUserControlStage()
         {
@@ -81,6 +86,16 @@ namespace MySchool.Forms
             panel1.Controls.Add(userControlTetcher);
         }
 
+        private void LoadUserControlSubject()
+        {
+            panel1.Controls.Clear();
+
+            UserControlSubjects userControlSubjects = new UserControlSubjects();
+
+            userControlSubjects.Dock = DockStyle.Fill;
+
+            panel1.Controls.Add(userControlSubjects);
+        }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 

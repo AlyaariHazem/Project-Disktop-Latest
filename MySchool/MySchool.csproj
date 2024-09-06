@@ -179,6 +179,12 @@
     <Compile Include="userControl\UserControlTeachers.Designer.cs">
       <DependentUpon>UserControlTeachers.cs</DependentUpon>
     </Compile>
+    <Compile Include="userControl\UsUserControlSubjects.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\UsUserControlSubjects.Designer.cs">
+      <DependentUpon>UsUserControlSubjects.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -218,6 +224,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="userControl\UserControlTeachers.resx">
       <DependentUpon>UserControlTeachers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="userControl\UsUserControlSubjects.resx">
+      <DependentUpon>UsUserControlSubjects.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
