@@ -23,9 +23,9 @@ namespace MySchool.userControl
         public UserControlStudents()
         {
             InitializeComponent();
-            tool.StyleDataGridView(guna2DataGridView1); 
             InitializeDataGridViewColumns();
             loaddata();
+            tool.StyleDataGridView(guna2DataGridView1); 
         }
 
       

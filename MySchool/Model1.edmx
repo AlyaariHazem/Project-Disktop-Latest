@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="SchoolDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="SchoolDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__EFMigrationsHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -144,9 +144,9 @@
           <Property Name="GuardianID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="DivisionID" Type="int" Nullable="false" />
-          <Property Name="URLImage" Type="nchar" MaxLength="10" />
           <Property Name="PayMent" Type="int" />
-          <Property Name="PlaceOFBirth" Type="varchar" MaxLength="200" />
+          <Property Name="URLImage" Type="nvarchar(max)" />
+          <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="255" />
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
@@ -179,8 +179,6 @@
           <Property Name="Gender" Type="nvarchar(max)" Nullable="false" />
           <Property Name="Age" Type="int" />
           <Property Name="HireDate" Type="date" Nullable="false" />
-          <Property Name="ManagerID" Type="int" Nullable="false" />
-          <Property Name="UserID" Type="int" Nullable="false" />
         </EntityType>
         <EntityType Name="TeacherStudents">
           <Key>
@@ -416,30 +414,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Teachers_Managers_ManagerID">
-          <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
-          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Managers">
-              <PropertyRef Name="ManagerID" />
-            </Principal>
-            <Dependent Role="Teachers">
-              <PropertyRef Name="ManagerID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Teachers_Users_UserID">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Teachers">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TeacherStudents_Students_StudentID">
           <End Role="Students" Type="Self.Students" Multiplicity="1" />
           <End Role="TeacherStudents" Type="Self.TeacherStudents" Multiplicity="*" />
@@ -602,14 +576,6 @@
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="SubjectStudents" EntitySet="SubjectStudents" />
           </AssociationSet>
-          <AssociationSet Name="FK_Teachers_Managers_ManagerID" Association="Self.FK_Teachers_Managers_ManagerID">
-            <End Role="Managers" EntitySet="Managers" />
-            <End Role="Teachers" EntitySet="Teachers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Teachers_Users_UserID" Association="Self.FK_Teachers_Users_UserID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Teachers" EntitySet="Teachers" />
-          </AssociationSet>
           <AssociationSet Name="FK_TeacherStudents_Students_StudentID" Association="Self.FK_TeacherStudents_Students_StudentID">
             <End Role="Students" EntitySet="Students" />
             <End Role="TeacherStudents" EntitySet="TeacherStudents" />
@@ -635,7 +601,8 @@
             <End Role="Years" EntitySet="Years" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SchoolDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -669,6 +636,15 @@
           <Property Name="ClassID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Classes" Relationship="Self.FK_Divisions_Classes_ClassID" FromRole="Divisions" ToRole="Classes" />
           <NavigationProperty Name="Students" Relationship="Self.FK_Students_Divisions_DivisionID" FromRole="Divisions" ToRole="Students" />
+        </EntityType>
+        <EntityType Name="Grades">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="value" Type="Int32" Nullable="false" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="Self.FK_Grades_Students" FromRole="Grades" ToRole="Students" />
         </EntityType>
         <EntityType Name="Guardians">
           <Key>
@@ -704,7 +680,6 @@
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Schools" Relationship="Self.FK_Managers_Schools_SchoolID" FromRole="Managers" ToRole="Schools" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Managers_Users_UserID" FromRole="Managers" ToRole="Users" />
-          <NavigationProperty Name="Teachers" Relationship="Self.FK_Teachers_Managers_ManagerID" FromRole="Managers" ToRole="Teachers" />
         </EntityType>
         <EntityType Name="Salarys">
           <Key>
@@ -745,9 +720,9 @@
           <Key>
             <PropertyRef Name="id" />
           </Key>
-          <Property Name="id" Nullable="false" annotation:StoreGeneratedPattern="Identity" Type="Int32" />
-          <Property Name="StageName" MaxLength="255" FixedLength="false" Unicode="true" Type="String" />
-          <Property Name="Note" MaxLength="Max" FixedLength="false" Unicode="true" Type="String" />
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StageName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Note" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="active" Type="Int32" />
         </EntityType>
         <EntityType Name="Stages">
@@ -778,17 +753,17 @@
           <Property Name="GuardianID" Type="Int32" Nullable="false" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="DivisionID" Type="Int32" Nullable="false" />
+          <Property Name="PayMent" Type="Int32" />
+          <Property Name="URLImage" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PlaceOfBirth" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="Divisions" Relationship="Self.FK_Students_Divisions_DivisionID" FromRole="Students" ToRole="Divisions" />
+          <NavigationProperty Name="Grades" Relationship="Self.FK_Grades_Students" FromRole="Students" ToRole="Grades" />
           <NavigationProperty Name="Guardians" Relationship="Self.FK_Students_Guardians_GuardianID" FromRole="Students" ToRole="Guardians" />
           <NavigationProperty Name="Users" Relationship="Self.FK_Students_Users_UserID" FromRole="Students" ToRole="Users" />
           <NavigationProperty Name="SubjectStudents" Relationship="Self.FK_SubjectStudents_Students_StudentID" FromRole="Students" ToRole="SubjectStudents" />
           <NavigationProperty Name="TeacherSubjectStudent" Relationship="Self.FK_TeacherSubjectStudent_Students_StudentID" FromRole="Students" ToRole="TeacherSubjectStudent" />
           <NavigationProperty Name="Classes" Relationship="Self.StudentClass" FromRole="Students" ToRole="Classes" />
           <NavigationProperty Name="Teachers" Relationship="Self.TeacherStudents" FromRole="Students" ToRole="Teachers" />
-          <Property Name="URLImage" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="PayMent" Type="Int32" />
-          <Property Name="PlaceOFBirth" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
-          <NavigationProperty Name="Grades" Relationship="SchoolDBModel.FK_Grades_Students" FromRole="Students" ToRole="Grades" />
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
@@ -826,11 +801,7 @@
           <Property Name="Gender" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Age" Type="Int32" />
           <Property Name="HireDate" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="ManagerID" Type="Int32" Nullable="false" />
-          <Property Name="UserID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Managers" Relationship="Self.FK_Teachers_Managers_ManagerID" FromRole="Teachers" ToRole="Managers" />
           <NavigationProperty Name="Salarys" Relationship="Self.FK_Salarys_Teachers_TeacherID" FromRole="Teachers" ToRole="Salarys" />
-          <NavigationProperty Name="Users" Relationship="Self.FK_Teachers_Users_UserID" FromRole="Teachers" ToRole="Users" />
           <NavigationProperty Name="TeacherSubjectStudent" Relationship="Self.FK_TeacherSubjectStudent_Teachers_TeacherID" FromRole="Teachers" ToRole="TeacherSubjectStudent" />
           <NavigationProperty Name="Students" Relationship="Self.TeacherStudents" FromRole="Teachers" ToRole="Students" />
         </EntityType>
@@ -860,7 +831,6 @@
           <NavigationProperty Name="Guardians" Relationship="Self.FK_Guardians_Users_UserID" FromRole="Users" ToRole="Guardians" />
           <NavigationProperty Name="Managers" Relationship="Self.FK_Managers_Users_UserID" FromRole="Users" ToRole="Managers" />
           <NavigationProperty Name="Students" Relationship="Self.FK_Students_Users_UserID" FromRole="Users" ToRole="Students" />
-          <NavigationProperty Name="Teachers" Relationship="Self.FK_Teachers_Users_UserID" FromRole="Users" ToRole="Teachers" />
         </EntityType>
         <EntityType Name="Years">
           <Key>
@@ -923,6 +893,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Grades_Students">
+          <End Role="Students" Type="Self.Students" Multiplicity="1" />
+          <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Guardians_Users_UserID">
           <End Role="Users" Type="Self.Users" Multiplicity="1" />
           <End Role="Guardians" Type="Self.Guardians" Multiplicity="*" />
@@ -970,18 +952,6 @@
             </Principal>
             <Dependent Role="Managers">
               <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Teachers_Managers_ManagerID">
-          <End Role="Managers" Type="Self.Managers" Multiplicity="1" />
-          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Managers">
-              <PropertyRef Name="ManagerID" />
-            </Principal>
-            <Dependent Role="Teachers">
-              <PropertyRef Name="ManagerID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1085,18 +1055,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Teachers_Users_UserID">
-          <End Role="Users" Type="Self.Users" Multiplicity="1" />
-          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Users">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="Teachers">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_TeacherSubjectStudent_Teachers_TeacherID">
           <End Role="Teachers" Type="Self.Teachers" Multiplicity="1">
             <OnDelete Action="Cascade" />
@@ -1123,6 +1081,7 @@
           <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
           <EntitySet Name="Classes" EntityType="Self.Classes" />
           <EntitySet Name="Divisions" EntityType="Self.Divisions" />
+          <EntitySet Name="Grades" EntityType="Self.Grades" />
           <EntitySet Name="Guardians" EntityType="Self.Guardians" />
           <EntitySet Name="Managers" EntityType="Self.Managers" />
           <EntitySet Name="Salarys" EntityType="Self.Salarys" />
@@ -1152,6 +1111,10 @@
             <End Role="Divisions" EntitySet="Divisions" />
             <End Role="Students" EntitySet="Students" />
           </AssociationSet>
+          <AssociationSet Name="FK_Grades_Students" Association="Self.FK_Grades_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
           <AssociationSet Name="FK_Guardians_Users_UserID" Association="Self.FK_Guardians_Users_UserID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Guardians" EntitySet="Guardians" />
@@ -1167,10 +1130,6 @@
           <AssociationSet Name="FK_Managers_Users_UserID" Association="Self.FK_Managers_Users_UserID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Managers" EntitySet="Managers" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Teachers_Managers_ManagerID" Association="Self.FK_Teachers_Managers_ManagerID">
-            <End Role="Managers" EntitySet="Managers" />
-            <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
           <AssociationSet Name="FK_Salarys_Teachers_TeacherID" Association="Self.FK_Salarys_Teachers_TeacherID">
             <End Role="Teachers" EntitySet="Teachers" />
@@ -1204,10 +1163,6 @@
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="TeacherSubjectStudent" EntitySet="TeacherSubjectStudent" />
           </AssociationSet>
-          <AssociationSet Name="FK_Teachers_Users_UserID" Association="Self.FK_Teachers_Users_UserID">
-            <End Role="Users" EntitySet="Users" />
-            <End Role="Teachers" EntitySet="Teachers" />
-          </AssociationSet>
           <AssociationSet Name="FK_TeacherSubjectStudent_Teachers_TeacherID" Association="Self.FK_TeacherSubjectStudent_Teachers_TeacherID">
             <End Role="Teachers" EntitySet="Teachers" />
             <End Role="TeacherSubjectStudent" EntitySet="TeacherSubjectStudent" />
@@ -1220,33 +1175,7 @@
             <End Role="Students" EntitySet="Students" />
             <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
-          <EntitySet Name="Grades" EntityType="SchoolDBModel.Grades" />
-          <AssociationSet Name="FK_Grades_Students" Association="SchoolDBModel.FK_Grades_Students">
-            <End Role="Students" EntitySet="Students" />
-            <End Role="Grades" EntitySet="Grades" />
-          </AssociationSet>
         </EntityContainer>
-        <EntityType Name="Grades">
-          <Key>
-            <PropertyRef Name="id" />
-          </Key>
-          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="value" Type="Int32" Nullable="false" />
-          <Property Name="studentID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="Students" Relationship="SchoolDBModel.FK_Grades_Students" FromRole="Grades" ToRole="Students" />
-        </EntityType>
-        <Association Name="FK_Grades_Students">
-          <End Type="SchoolDBModel.Students" Role="Students" Multiplicity="1" />
-          <End Type="SchoolDBModel.Grades" Role="Grades" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="Students">
-              <PropertyRef Name="StudentID" />
-            </Principal>
-            <Dependent Role="Grades">
-              <PropertyRef Name="studentID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1278,6 +1207,15 @@
                 <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
                 <ScalarProperty Name="DivisionName" ColumnName="DivisionName" />
                 <ScalarProperty Name="ClassID" ColumnName="ClassID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Grades">
+            <EntityTypeMapping TypeName="SchoolDBModel.Grades">
+              <MappingFragment StoreEntitySet="Grades">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1373,9 +1311,6 @@
           <EntitySetMapping Name="Students">
             <EntityTypeMapping TypeName="SchoolDBModel.Students">
               <MappingFragment StoreEntitySet="Students">
-                <ScalarProperty Name="PlaceOFBirth" ColumnName="PlaceOFBirth" />
-                <ScalarProperty Name="PayMent" ColumnName="PayMent" />
-                <ScalarProperty Name="URLImage" ColumnName="URLImage" />
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
                 <ScalarProperty Name="FullName_FirstName" ColumnName="FullName_FirstName" />
                 <ScalarProperty Name="FullName_SecondName" ColumnName="FullName_SecondName" />
@@ -1387,6 +1322,9 @@
                 <ScalarProperty Name="GuardianID" ColumnName="GuardianID" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+                <ScalarProperty Name="PayMent" ColumnName="PayMent" />
+                <ScalarProperty Name="URLImage" ColumnName="URLImage" />
+                <ScalarProperty Name="PlaceOfBirth" ColumnName="PlaceOfBirth" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1421,8 +1359,6 @@
                 <ScalarProperty Name="Gender" ColumnName="Gender" />
                 <ScalarProperty Name="Age" ColumnName="Age" />
                 <ScalarProperty Name="HireDate" ColumnName="HireDate" />
-                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1475,15 +1411,6 @@
               <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
             </EndProperty>
           </AssociationSetMapping>
-          <EntitySetMapping Name="Grades">
-            <EntityTypeMapping TypeName="SchoolDBModel.Grades">
-              <MappingFragment StoreEntitySet="Grades">
-                <ScalarProperty Name="studentID" ColumnName="studentID" />
-                <ScalarProperty Name="value" ColumnName="value" />
-                <ScalarProperty Name="id" ColumnName="id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -1498,7 +1425,7 @@
     <Options>
       <DesignerInfoPropertySet>
         <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
         <DesignerProperty Name="UseLegacyProvider" Value="false" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />

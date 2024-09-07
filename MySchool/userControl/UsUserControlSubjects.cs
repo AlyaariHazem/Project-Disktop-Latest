@@ -37,8 +37,9 @@ namespace MySchool.userControl
                 {"ClassName", "الصـف"}
             }, new Dictionary<string, (string, string)>
             {
-                {"Delete", ("حذف", "حذف")},
-                {"Edit", ("تعديل", "تعديل")}
+                {"Edit", ("تعديل", "تعديل")},
+                {"Delete", ("حذف", "حذف")}
+
             });
 
             // Load subjects data
@@ -169,12 +170,15 @@ namespace MySchool.userControl
         {
             try
             {
+                DialogResult chose = MessageBox.Show("هل تريد حذف المادة هذه؟", "Delete Conform", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                
+                if (chose == DialogResult.Yes) { 
+
                 var subject = db.Subjects.Find(subjectID);
                 if (subject != null)
                 {
                     db.Subjects.Remove(subject);
                     db.SaveChanges();
-
                     MessageBox.Show("تم حذف المادة بنجاح!");
 
                     LoadSubjects(); // Refresh the data grid after deletion
@@ -182,6 +186,7 @@ namespace MySchool.userControl
                 else
                 {
                     MessageBox.Show(".المادة غير موجودة");
+                }
                 }
             }
             catch (Exception ex)

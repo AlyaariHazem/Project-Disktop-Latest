@@ -47,13 +47,18 @@
             treeNode7,
             treeNode8,
             treeNode9});
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("أولياء الأمور");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("التقويم");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("الأختبارات");
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("العطل");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("الحسابات");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("المدونات");
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("الإدارة");
+            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("عرض المواد");
+            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("إضافة مادة");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("المواد الدراسية", new System.Windows.Forms.TreeNode[] {
+            treeNode11,
+            treeNode12});
+            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("أولياء الأمور");
+            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("التقويم");
+            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("الأختبارات");
+            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("العطل");
+            System.Windows.Forms.TreeNode treeNode18 = new System.Windows.Forms.TreeNode("الحسابات");
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("المدونات");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("الإدارة");
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
@@ -226,40 +231,47 @@
             treeNode10.Name = "Node2";
             treeNode10.SelectedImageIndex = 9;
             treeNode10.Text = "الطلاب";
-            treeNode11.ImageKey = "icon-4.png";
-            treeNode11.Name = "Node3";
-            treeNode11.SelectedImageIndex = 3;
-            treeNode11.Text = "أولياء الأمور";
-            treeNode12.ImageKey = "icon-18.png";
-            treeNode12.Name = "Node4";
-            treeNode12.SelectedImageIndex = 16;
-            treeNode12.Text = "التقويم";
-            treeNode13.ImageKey = "icon-7.png";
-            treeNode13.Name = "Node5";
-            treeNode13.Text = "الأختبارات";
-            treeNode14.ImageKey = "icon-8.png";
-            treeNode14.Name = "Node6";
-            treeNode14.Text = "العطل";
-            treeNode15.ImageKey = "icon-10.png";
-            treeNode15.Name = "Node7";
-            treeNode15.Text = "الحسابات";
-            treeNode16.ImageKey = "icon-17.png";
-            treeNode16.Name = "Node8";
-            treeNode16.Text = "المدونات";
-            treeNode17.ImageKey = "icon-20.png";
-            treeNode17.Name = "Node9";
-            treeNode17.Text = "الإدارة";
+            treeNode11.Name = "Node1";
+            treeNode11.Text = "عرض المواد";
+            treeNode12.Name = "Node3";
+            treeNode12.Text = "إضافة مادة";
+            treeNode13.Name = "Node0";
+            treeNode13.Text = "المواد الدراسية";
+            treeNode14.ImageKey = "icon-4.png";
+            treeNode14.Name = "Node3";
+            treeNode14.SelectedImageIndex = 3;
+            treeNode14.Text = "أولياء الأمور";
+            treeNode15.ImageKey = "icon-18.png";
+            treeNode15.Name = "Node4";
+            treeNode15.SelectedImageIndex = 16;
+            treeNode15.Text = "التقويم";
+            treeNode16.ImageKey = "icon-7.png";
+            treeNode16.Name = "Node5";
+            treeNode16.Text = "الأختبارات";
+            treeNode17.ImageKey = "icon-8.png";
+            treeNode17.Name = "Node6";
+            treeNode17.Text = "العطل";
+            treeNode18.ImageKey = "icon-10.png";
+            treeNode18.Name = "Node7";
+            treeNode18.Text = "الحسابات";
+            treeNode19.ImageKey = "icon-17.png";
+            treeNode19.Name = "Node8";
+            treeNode19.Text = "المدونات";
+            treeNode20.ImageKey = "icon-20.png";
+            treeNode20.Name = "Node9";
+            treeNode20.Text = "الإدارة";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode6,
             treeNode10,
-            treeNode11,
-            treeNode12,
             treeNode13,
             treeNode14,
             treeNode15,
             treeNode16,
-            treeNode17});
+            treeNode17,
+            treeNode18,
+            treeNode19,
+            treeNode20});
             this.treeView1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.treeView1.RightToLeftLayout = true;
             this.treeView1.SelectedImageIndex = 0;

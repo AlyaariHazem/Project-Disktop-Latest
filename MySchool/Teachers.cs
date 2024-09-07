@@ -32,13 +32,9 @@ namespace MySchool
         public string Gender { get; set; }
         public Nullable<int> Age { get; set; }
         public System.DateTime HireDate { get; set; }
-        public int ManagerID { get; set; }
-        public int UserID { get; set; }
     
-        public virtual Managers Managers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Salarys> Salarys { get; set; }
-        public virtual Users Users { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherSubjectStudent> TeacherSubjectStudent { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

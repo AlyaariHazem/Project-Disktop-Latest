@@ -20,7 +20,6 @@ namespace MySchool
             this.Guardians = new HashSet<Guardians>();
             this.Managers = new HashSet<Managers>();
             this.Students = new HashSet<Students>();
-            this.Teachers = new HashSet<Teachers>();
         }
     
         public int UserID { get; set; }
@@ -36,7 +35,5 @@ namespace MySchool
         public virtual ICollection<Managers> Managers { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Students> Students { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Teachers> Teachers { get; set; }
     }
 }

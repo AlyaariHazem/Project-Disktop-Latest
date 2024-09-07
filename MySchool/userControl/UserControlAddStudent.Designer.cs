@@ -58,6 +58,7 @@
             this.label17 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.guna2GroupBox1 = new Guna.UI2.WinForms.Guna2GroupBox();
+            this.btncancel = new Guna.UI2.WinForms.Guna2Button();
             this.txtLastName = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtThirdName = new Guna.UI2.WinForms.Guna2TextBox();
             this.txtSecondName = new Guna.UI2.WinForms.Guna2TextBox();
@@ -75,7 +76,6 @@
             this.btn_choos_image = new Guna.UI2.WinForms.Guna2Button();
             this.label23 = new System.Windows.Forms.Label();
             this.label22 = new System.Windows.Forms.Label();
-            this.btncancel = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GroupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picther_userimage)).BeginInit();
             this.guna2GroupBox1.SuspendLayout();
@@ -147,10 +147,10 @@
             this.guna2GroupBox3.FillColor = System.Drawing.Color.AliceBlue;
             this.guna2GroupBox3.Font = new System.Drawing.Font("Segoe UI", 11F, System.Drawing.FontStyle.Bold);
             this.guna2GroupBox3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(64)))));
-            this.guna2GroupBox3.Location = new System.Drawing.Point(15, 408);
+            this.guna2GroupBox3.Location = new System.Drawing.Point(15, 360);
             this.guna2GroupBox3.Name = "guna2GroupBox3";
             this.guna2GroupBox3.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.guna2GroupBox3.Size = new System.Drawing.Size(678, 239);
+            this.guna2GroupBox3.Size = new System.Drawing.Size(678, 291);
             this.guna2GroupBox3.TabIndex = 64;
             this.guna2GroupBox3.Text = "بيانات ولي الأمر";
             this.guna2GroupBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -180,7 +180,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label4.Location = new System.Drawing.Point(163, 137);
+            this.label4.Location = new System.Drawing.Point(163, 182);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 23);
             this.label4.TabIndex = 59;
@@ -198,7 +198,7 @@
             this.txtfatheraddrees.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtfatheraddrees.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtfatheraddrees.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtfatheraddrees.Location = new System.Drawing.Point(15, 168);
+            this.txtfatheraddrees.Location = new System.Drawing.Point(15, 213);
             this.txtfatheraddrees.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtfatheraddrees.Name = "txtfatheraddrees";
             this.txtfatheraddrees.PasswordChar = '\0';
@@ -225,7 +225,7 @@
             this.birth_date_father.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.birth_date_father.ForeColor = System.Drawing.Color.Black;
             this.birth_date_father.Format = System.Windows.Forms.DateTimePickerFormat.Long;
-            this.birth_date_father.Location = new System.Drawing.Point(241, 168);
+            this.birth_date_father.Location = new System.Drawing.Point(241, 213);
             this.birth_date_father.MaxDate = new System.DateTime(9998, 12, 31, 0, 0, 0, 0);
             this.birth_date_father.MinDate = new System.DateTime(1753, 1, 1, 0, 0, 0, 0);
             this.birth_date_father.Name = "birth_date_father";
@@ -239,7 +239,7 @@
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 10F);
             this.label1.ForeColor = System.Drawing.Color.Black;
-            this.label1.Location = new System.Drawing.Point(330, 137);
+            this.label1.Location = new System.Drawing.Point(330, 182);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(94, 23);
             this.label1.TabIndex = 54;
@@ -249,7 +249,7 @@
             // 
             this.label26.AutoSize = true;
             this.label26.Font = new System.Drawing.Font("Segoe UI", 10F);
-            this.label26.Location = new System.Drawing.Point(525, 136);
+            this.label26.Location = new System.Drawing.Point(525, 181);
             this.label26.Name = "label26";
             this.label26.Size = new System.Drawing.Size(124, 23);
             this.label26.TabIndex = 19;
@@ -267,7 +267,7 @@
             this.txtfatheremail.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
             this.txtfatheremail.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.txtfatheremail.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.txtfatheremail.Location = new System.Drawing.Point(464, 168);
+            this.txtfatheremail.Location = new System.Drawing.Point(464, 213);
             this.txtfatheremail.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtfatheremail.Name = "txtfatheremail";
             this.txtfatheremail.PasswordChar = '\0';
@@ -568,6 +568,25 @@
             this.guna2GroupBox1.Text = "بيانات الطالب";
             this.guna2GroupBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
+            // btncancel
+            // 
+            this.btncancel.BackColor = System.Drawing.SystemColors.Info;
+            this.btncancel.BorderRadius = 8;
+            this.btncancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.btncancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.btncancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.btncancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.btncancel.FillColor = System.Drawing.Color.Linen;
+            this.btncancel.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.btncancel.ForeColor = System.Drawing.Color.Black;
+            this.btncancel.Location = new System.Drawing.Point(170, 0);
+            this.btncancel.Name = "btncancel";
+            this.btncancel.Size = new System.Drawing.Size(129, 36);
+            this.btncancel.TabIndex = 61;
+            this.btncancel.Text = "الغاء";
+            this.btncancel.Visible = false;
+            this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
+            // 
             // txtLastName
             // 
             this.txtLastName.BorderRadius = 5;
@@ -829,9 +848,9 @@
             this.btn_choos_image.FillColor = System.Drawing.Color.LimeGreen;
             this.btn_choos_image.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_choos_image.ForeColor = System.Drawing.Color.White;
-            this.btn_choos_image.Location = new System.Drawing.Point(32, 198);
+            this.btn_choos_image.Location = new System.Drawing.Point(0, 43);
             this.btn_choos_image.Name = "btn_choos_image";
-            this.btn_choos_image.Size = new System.Drawing.Size(129, 36);
+            this.btn_choos_image.Size = new System.Drawing.Size(195, 191);
             this.btn_choos_image.TabIndex = 61;
             this.btn_choos_image.Text = "اختر صورة";
             this.btn_choos_image.Click += new System.EventHandler(this.btn_choos_image_Click);
@@ -856,25 +875,6 @@
             this.label22.TabIndex = 11;
             this.label22.Text = "مكان الميلاد";
             // 
-            // btncancel
-            // 
-            this.btncancel.BackColor = System.Drawing.SystemColors.Info;
-            this.btncancel.BorderRadius = 8;
-            this.btncancel.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.btncancel.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.btncancel.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.btncancel.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.btncancel.FillColor = System.Drawing.Color.Linen;
-            this.btncancel.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.btncancel.ForeColor = System.Drawing.Color.Black;
-            this.btncancel.Location = new System.Drawing.Point(170, 0);
-            this.btncancel.Name = "btncancel";
-            this.btncancel.Size = new System.Drawing.Size(129, 36);
-            this.btncancel.TabIndex = 61;
-            this.btncancel.Text = "الغاء";
-            this.btncancel.Visible = false;
-            this.btncancel.Click += new System.EventHandler(this.btncancel_Click);
-            // 
             // UserControlAddStudent
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -885,7 +885,7 @@
             this.Controls.Add(this.guna2GroupBox1);
             this.Controls.Add(this.guna2GroupBox2);
             this.Name = "UserControlAddStudent";
-            this.Size = new System.Drawing.Size(1071, 649);
+            this.Size = new System.Drawing.Size(1071, 665);
             this.guna2GroupBox3.ResumeLayout(false);
             this.guna2GroupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picther_userimage)).EndInit();

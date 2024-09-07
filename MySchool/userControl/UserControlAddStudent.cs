@@ -71,7 +71,7 @@ namespace MySchool.userControl
                     { "Phone", txtfatherphon.Text },
                     { "Email", txtfatheremail.Text },
                     { "TypeGuardian", txtcall_father.Text },
-                    { "UserID", Forms.Login.userid }
+                    { "UserID", 4 }
                 };
 
                     try
@@ -96,12 +96,13 @@ namespace MySchool.userControl
                     var selectedClass = db1.Classes.FirstOrDefault(c => c.ClassName == compo_class.Text);
                     var selecteddiv = db1.Divisions.FirstOrDefault(c => c.DivisionName == compo_stage.Text && c.ClassID==selectedClass.ClassID);
                     var gurdian = db1.Guardians.FirstOrDefault(c => c.FullName_FirstName == txtfatherName.Text);
-
+                    var UserID = 4;
 
                     
 
                     var svalues = new Dictionary<string, object>
                 {
+                        
                     { "FullName_FirstName", txtFirstName.Text },
                     { "FullName_SecondName", txtSecondName.Text },
                     { "FullName_ThirdName",  txtThirdName.Text },
@@ -109,7 +110,7 @@ namespace MySchool.userControl
                     { "DateOfBirth", birth_date_student.Value },
                     { "Gender", compo_gender.Text },
                     { "Phone", txtphon.Text },
-                    { "UserID", Forms.Login.userid },
+                    { "UserID", UserID},
                     { "GuardianID",gurdian.GuardianID },
                     { "DivisionID", selecteddiv.DivisionID },
                     { "URLImage", image_path },
