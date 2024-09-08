@@ -17,6 +17,7 @@ namespace MySchool
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Users()
         {
+            this.Grades = new HashSet<Grades>();
             this.Guardians = new HashSet<Guardians>();
             this.Managers = new HashSet<Managers>();
             this.Students = new HashSet<Students>();
@@ -29,6 +30,8 @@ namespace MySchool
         public string UserType { get; set; }
         public string Password { get; set; }
     
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Grades> Grades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Guardians> Guardians { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

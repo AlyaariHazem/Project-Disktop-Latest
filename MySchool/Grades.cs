@@ -17,7 +17,13 @@ namespace MySchool
         public int id { get; set; }
         public int value { get; set; }
         public int studentID { get; set; }
+        public int subject_id { get; set; }
+        public int user_id { get; set; }
+        public string grade_type { get; set; }
+        public string note { get; set; }
     
         public virtual Students Students { get; set; }
+        public virtual Subjects Subjects { get; set; }
+        public virtual Users Users { get; set; }
     }
 }

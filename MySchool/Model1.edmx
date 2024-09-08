@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="SchoolDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="SchoolDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="__EFMigrationsHistory">
           <Key>
             <PropertyRef Name="MigrationId" />
@@ -37,6 +37,10 @@
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="value" Type="int" Nullable="false" />
           <Property Name="studentID" Type="int" Nullable="false" />
+          <Property Name="subject_id" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="grade_type" Type="nchar" MaxLength="100" />
+          <Property Name="note" Type="nchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Guardians">
           <Key>
@@ -253,6 +257,30 @@
             </Principal>
             <Dependent Role="Grades">
               <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grades_subjects">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="subject_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grades_users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -524,6 +552,14 @@
             <End Role="Students" EntitySet="Students" />
             <End Role="Grades" EntitySet="Grades" />
           </AssociationSet>
+          <AssociationSet Name="FK_Grades_subjects" Association="Self.FK_Grades_subjects">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grades_users" Association="Self.FK_Grades_users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
           <AssociationSet Name="FK_Guardians_Users_UserID" Association="Self.FK_Guardians_Users_UserID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Guardians" EntitySet="Guardians" />
@@ -601,8 +637,7 @@
             <End Role="Years" EntitySet="Years" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="SchoolDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -644,7 +679,13 @@
           <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="value" Type="Int32" Nullable="false" />
           <Property Name="studentID" Type="Int32" Nullable="false" />
+          <Property Name="subject_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="grade_type" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
           <NavigationProperty Name="Students" Relationship="Self.FK_Grades_Students" FromRole="Grades" ToRole="Students" />
+          <NavigationProperty Name="Subjects" Relationship="Self.FK_Grades_subjects" FromRole="Grades" ToRole="Subjects" />
+          <NavigationProperty Name="Users" Relationship="Self.FK_Grades_users" FromRole="Grades" ToRole="Users" />
         </EntityType>
         <EntityType Name="Guardians">
           <Key>
@@ -773,6 +814,7 @@
           <Property Name="SubjectName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="ClassID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Classes" Relationship="Self.FK_Subjects_Classes_ClassID" FromRole="Subjects" ToRole="Classes" />
+          <NavigationProperty Name="Grades" Relationship="Self.FK_Grades_subjects" FromRole="Subjects" ToRole="Grades" />
           <NavigationProperty Name="SubjectStudents" Relationship="Self.FK_SubjectStudents_Subjects_SubjectID" FromRole="Subjects" ToRole="SubjectStudents" />
           <NavigationProperty Name="TeacherSubjectStudent" Relationship="Self.FK_TeacherSubjectStudent_Subjects_SubjectID" FromRole="Subjects" ToRole="TeacherSubjectStudent" />
         </EntityType>
@@ -828,6 +870,7 @@
           <Property Name="UpdatedAt" Type="DateTime" Nullable="false" Precision="7" />
           <Property Name="UserType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
           <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Grades" Relationship="Self.FK_Grades_users" FromRole="Users" ToRole="Grades" />
           <NavigationProperty Name="Guardians" Relationship="Self.FK_Guardians_Users_UserID" FromRole="Users" ToRole="Guardians" />
           <NavigationProperty Name="Managers" Relationship="Self.FK_Managers_Users_UserID" FromRole="Users" ToRole="Managers" />
           <NavigationProperty Name="Students" Relationship="Self.FK_Students_Users_UserID" FromRole="Users" ToRole="Students" />
@@ -902,6 +945,30 @@
             </Principal>
             <Dependent Role="Grades">
               <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grades_subjects">
+          <End Role="Subjects" Type="Self.Subjects" Multiplicity="1" />
+          <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="subject_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grades_users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="user_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -1115,6 +1182,14 @@
             <End Role="Students" EntitySet="Students" />
             <End Role="Grades" EntitySet="Grades" />
           </AssociationSet>
+          <AssociationSet Name="FK_Grades_subjects" Association="Self.FK_Grades_subjects">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grades_users" Association="Self.FK_Grades_users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
           <AssociationSet Name="FK_Guardians_Users_UserID" Association="Self.FK_Guardians_Users_UserID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Guardians" EntitySet="Guardians" />
@@ -1216,6 +1291,10 @@
                 <ScalarProperty Name="id" ColumnName="id" />
                 <ScalarProperty Name="value" ColumnName="value" />
                 <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="grade_type" ColumnName="grade_type" />
+                <ScalarProperty Name="note" ColumnName="note" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

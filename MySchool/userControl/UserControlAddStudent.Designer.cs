@@ -342,7 +342,7 @@
             // 
             this.picther_userimage.BorderRadius = 5;
             this.picther_userimage.ImageRotate = 0F;
-            this.picther_userimage.InitialImage = global::MySchool.Properties.Resources.user_06;
+            this.picther_userimage.InitialImage = global::MySchool.Properties.Resources.DefaultProfileImage;
             this.picther_userimage.Location = new System.Drawing.Point(0, 39);
             this.picther_userimage.Name = "picther_userimage";
             this.picther_userimage.Size = new System.Drawing.Size(195, 152);
@@ -848,9 +848,9 @@
             this.btn_choos_image.FillColor = System.Drawing.Color.LimeGreen;
             this.btn_choos_image.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.btn_choos_image.ForeColor = System.Drawing.Color.White;
-            this.btn_choos_image.Location = new System.Drawing.Point(0, 43);
+            this.btn_choos_image.Location = new System.Drawing.Point(0, 197);
             this.btn_choos_image.Name = "btn_choos_image";
-            this.btn_choos_image.Size = new System.Drawing.Size(195, 191);
+            this.btn_choos_image.Size = new System.Drawing.Size(195, 37);
             this.btn_choos_image.TabIndex = 61;
             this.btn_choos_image.Text = "اختر صورة";
             this.btn_choos_image.Click += new System.EventHandler(this.btn_choos_image_Click);
