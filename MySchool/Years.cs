@@ -18,6 +18,7 @@ namespace MySchool
         public Years()
         {
             this.Stages = new HashSet<Stages>();
+            this.MONTHS = new HashSet<MONTH>();
         }
     
         public int YearID { get; set; }
@@ -30,5 +31,7 @@ namespace MySchool
         public virtual Schools Schools { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Stages> Stages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<MONTH> MONTHS { get; set; }
     }
 }

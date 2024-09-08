@@ -42,5 +42,6 @@ namespace MySchool
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Years> Years { get; set; }
         public virtual DbSet<Grades> Grades { get; set; }
+        public virtual DbSet<MONTH> MONTHS { get; set; }
     }
 }

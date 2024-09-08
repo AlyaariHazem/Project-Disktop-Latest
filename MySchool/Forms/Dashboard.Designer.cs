@@ -49,7 +49,7 @@
             treeNode9});
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("أولياء الأمور");
             System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("التقويم");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("الأختبارات");
+            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("الدرجات");
             System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("العطل");
             System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("الحسابات");
             System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("المدونات");
@@ -236,7 +236,7 @@
             treeNode12.Text = "التقويم";
             treeNode13.ImageKey = "icon-7.png";
             treeNode13.Name = "Node5";
-            treeNode13.Text = "الأختبارات";
+            treeNode13.Text = "الدرجات";
             treeNode14.ImageKey = "icon-8.png";
             treeNode14.Name = "Node6";
             treeNode14.Text = "العطل";

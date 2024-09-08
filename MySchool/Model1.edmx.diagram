@@ -44,6 +44,12 @@
         <AssociationConnector Association="SchoolDBModel.TeacherStudents" ManuallyRouted="false" />
         <EntityTypeShape EntityType="SchoolDBModel.Grades" Width="1.5" PointX="7.625" PointY="14.25" />
         <AssociationConnector Association="SchoolDBModel.FK_Grades_Students" />
+        <EntityTypeShape EntityType="SchoolDBModel.MONTH" Width="1.5" PointX="3.75" PointY="19.375" />
+        <AssociationConnector Association="SchoolDBModel.FK_Grades_MONTHS" />
+        <AssociationConnector Association="SchoolDBModel.FK_Grades_subjects" />
+        <AssociationConnector Association="SchoolDBModel.FK_Grades_users" />
+        <AssociationConnector Association="SchoolDBModel.FK_MONTHS_users" />
+        <AssociationConnector Association="SchoolDBModel.FK_MONTHS_yera" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

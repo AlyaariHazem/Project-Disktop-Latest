@@ -20,7 +20,7 @@ namespace MySchool.userControl
         private tools tool = new tools();
         private int is_update = 0;
         private int student_id = 0;
-        float val = 0;
+    
         public UserControlgrade()
         {
             InitializeComponent();
@@ -102,15 +102,15 @@ namespace MySchool.userControl
                     foreach (var student in students)
                     {
 
-                     
-
-                            using (var db = new DatabaseHelper())
-                            {
 
 
+                        using (var db = new DatabaseHelper())
+                        {
 
 
-                                var values = new Dictionary<string, object>
+
+
+                            var values = new Dictionary<string, object>
                 {
                     { "studentID", student.StudentID },
                     { "subject_id", selectedsubject.SubjectID },
@@ -121,21 +121,21 @@ namespace MySchool.userControl
                     { "share_value", 0 },
                     { "homework_value", 0 },
                     { "user_id", Forms.Login.userid },
-                 
+
 
                 };
 
-                                try
-                                {
-                                        db.Insert("Grades", values);
-                                  
+                            try
+                            {
+                                db.Insert("Grades", values);
 
-                                }
-                                catch (Exception ex)
-                                {
-                                    MessageBox.Show("An error occurred while adding : " + ex.Message);
-                                }
-                            
+
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show("An error occurred while adding : " + ex.Message);
+                            }
+
 
 
 
@@ -161,13 +161,13 @@ namespace MySchool.userControl
         private void update_grade()
         {
 
-         if (is_update == 1 && student_id != 0)
-           {
+            if (is_update == 1 && student_id != 0)
+            {
 
                 if (compo_class.SelectedIndex != -1 && compo_division.SelectedIndex != -1 && compo_subjects.SelectedIndex != -1 && compo_months.SelectedIndex != -1)
                 {
 
-                  
+
 
                     var selectedClass = db1.Classes.FirstOrDefault(c => c.ClassName == compo_class.Text);
                     var selectedDivision = db1.Divisions.FirstOrDefault(c => c.DivisionName == compo_division.Text);
@@ -175,16 +175,16 @@ namespace MySchool.userControl
                     var selectedmonth = db1.MONTHS.FirstOrDefault(c => c.value == compo_months.Text);
 
 
-                 
-                 
-
-                        using (var db = new DatabaseHelper())
-                        {
 
 
 
+                    using (var db = new DatabaseHelper())
+                    {
 
-                            var values = new Dictionary<string, object>
+
+
+
+                        var values = new Dictionary<string, object>
                 {
                     { "studentID",student_id },
                     { "subject_id", selectedsubject.SubjectID },
@@ -195,25 +195,25 @@ namespace MySchool.userControl
                     { "share_value", float.Parse(txt_share.Text) },
                     { "homework_value",  float.Parse(txthomwork.Text) },
                     { "user_id", Forms.Login.userid },
-                    
+
 
                 };
 
-                            try
-                            {
+                        try
+                        {
 
-                                db.Update("Grades", values, $"studentID={student_id} and subject_id={selectedsubject.SubjectID} " +
-                                    $" and month_id ={selectedmonth.id} ");
+                            db.Update("Grades", values, $"studentID={student_id} and subject_id={selectedsubject.SubjectID} " +
+                                $" and month_id ={selectedmonth.id} ");
 
                             MessageBox.Show("update sucssusse");
-                            }
-                            catch (Exception ex)
-                            {
-                                MessageBox.Show("An error occurred while adding : " + ex.Message);
-                            }
-
-
                         }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show("An error occurred while adding : " + ex.Message);
+                        }
+
+
+                    }
 
 
 
@@ -225,7 +225,7 @@ namespace MySchool.userControl
 
             }
 
-    
+
         }
 
 
@@ -246,7 +246,7 @@ namespace MySchool.userControl
         {"sum", "المجموع"},
         {"ratio", "النسبة"}
 
-    
+
     });
 
 
@@ -258,11 +258,11 @@ namespace MySchool.userControl
         {
 
             var grades = db1.Grades
-                .Where(g => 
+                .Where(g =>
                g.Students.Divisions.Classes.ClassName.ToLower().Equals(compo_class.Text) &&
                g.Students.Divisions.DivisionName.ToLower().Equals(compo_division.Text) &&
-               (g.MONTH.value.ToLower().Equals(compo_months.Text) && g.MONTH.Year.Active == true ) &&
-               g.Subject.SubjectName.ToLower().Equals(compo_subjects.Text) )
+               (g.MONTH.value.ToLower().Equals(compo_months.Text) && g.MONTH.Year.Active == true) &&
+               g.Subject.SubjectName.ToLower().Equals(compo_subjects.Text))
                 .Select(g => new
                 {
                     studentid = g.Students.StudentID,
@@ -270,13 +270,13 @@ namespace MySchool.userControl
                     socend_name = g.Students.FullName_SecondName,
                     third_name = g.Students.FullName_ThirdName,
                     last_name = g.Students.FullName_LastName,
-                   subject_name = g.Subject.SubjectName,
-                    howmwork =g.homework_value, 
-                    attendance = g.atendance_value, 
-                    share =g.share_value, 
-                    shfahi =g.shafahi_value, 
+                    subject_name = g.Subject.SubjectName,
+                    howmwork = g.homework_value,
+                    attendance = g.atendance_value,
+                    share = g.share_value,
+                    shfahi = g.shafahi_value,
                     testing = g.testing_value
-                   
+
                 })
             .ToList();
 
@@ -315,7 +315,7 @@ namespace MySchool.userControl
 
         private void guna2DataGridView2_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-           
+
         }
 
         private void guna2DataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -323,8 +323,8 @@ namespace MySchool.userControl
             if (e.RowIndex >= 0)
             {
 
-               
-              
+
+
 
                 student_id = int.Parse(guna2DataGridView2.Rows[e.RowIndex].Cells["StudentID"].Value.ToString());
                 txtName.Text = guna2DataGridView2.Rows[e.RowIndex].Cells["StudentName"].Value.ToString();
