@@ -51,6 +51,7 @@ namespace MySchool.Forms
             {
                 LoadUserControlSubject();
             }
+
             else if (message.ToLower() == "التقويم")
             {
                 LoadUserControlReports();
@@ -91,6 +92,7 @@ namespace MySchool.Forms
         private void LoadUserControlReports()
         {
             panel1.Controls.Clear();
+
 
             UserControlReports userControlReports = new UserControlReports();
 
@@ -142,6 +144,17 @@ namespace MySchool.Forms
             userControlSubjects.Dock = DockStyle.Fill;
 
             panel1.Controls.Add(userControlSubjects);
+        }  
+        
+        private void LoadUserControlgrades()
+        {
+            panel1.Controls.Clear();
+
+            UserControlgrade userControlgrades= new UserControlgrade();
+
+            userControlgrades.Dock = DockStyle.Fill;
+
+            panel1.Controls.Add(userControlgrades);
         }
         private void panel1_Paint(object sender, PaintEventArgs e)
         {

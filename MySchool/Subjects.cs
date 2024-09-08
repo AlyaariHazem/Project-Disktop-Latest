@@ -20,6 +20,7 @@ namespace MySchool
             this.Grades = new HashSet<Grades>();
             this.SubjectStudents = new HashSet<SubjectStudents>();
             this.TeacherSubjectStudent = new HashSet<TeacherSubjectStudent>();
+            this.Grades = new HashSet<Grades>();
         }
     
         public int SubjectID { get; set; }
@@ -33,5 +34,7 @@ namespace MySchool
         public virtual ICollection<SubjectStudents> SubjectStudents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<TeacherSubjectStudent> TeacherSubjectStudent { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Grades> Grades { get; set; }
     }
 }

@@ -35,11 +35,19 @@
             <PropertyRef Name="id" />
           </Key>
           <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="value" Type="int" Nullable="false" />
+          <Property Name="testing_value" Type="int" Nullable="false" />
+          <Property Name="share_value" Type="int" Nullable="false" />
+          <Property Name="atendance_value" Type="int" Nullable="false" />
+          <Property Name="shafahi_value" Type="int" Nullable="false" />
+          <Property Name="homework_value" Type="int" Nullable="false" />
           <Property Name="studentID" Type="int" Nullable="false" />
           <Property Name="subject_id" Type="int" Nullable="false" />
           <Property Name="user_id" Type="int" Nullable="false" />
+
+          <Property Name="month_id" Type="int" Nullable="false" />
+
           <Property Name="grade_type" Type="nchar" MaxLength="100" />
+
           <Property Name="note" Type="nchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Guardians">
@@ -72,6 +80,16 @@
           <Property Name="Age" Type="int" />
           <Property Name="SchoolID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MONTHS">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="value" Type="nchar" MaxLength="100" />
+          <Property Name="YearID" Type="int" Nullable="false" />
+          <Property Name="user_id" Type="int" Nullable="false" />
+          <Property Name="note" Type="nchar" MaxLength="200" />
         </EntityType>
         <EntityType Name="Salarys">
           <Key>
@@ -148,6 +166,8 @@
           <Property Name="GuardianID" Type="int" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="DivisionID" Type="int" Nullable="false" />
+
+          <Property Name="URLImage" Type="nvarchar" MaxLength="255" />
           <Property Name="PayMent" Type="int" />
           <Property Name="URLImage" Type="nvarchar(max)" />
           <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="255" />
@@ -248,6 +268,18 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_Grades_MONTHS">
+          <End Role="MONTHS" Type="Self.MONTHS" Multiplicity="1" />
+          <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONTHS">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="month_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_Grades_Students">
           <End Role="Students" Type="Self.Students" Multiplicity="1" />
           <End Role="Grades" Type="Self.Grades" Multiplicity="*" />
@@ -317,6 +349,30 @@
             </Principal>
             <Dependent Role="Managers">
               <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONTHS_users">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="MONTHS" Type="Self.MONTHS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MONTHS">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONTHS_yera">
+          <End Role="Years" Type="Self.Years" Multiplicity="1" />
+          <End Role="MONTHS" Type="Self.MONTHS" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="YearID" />
+            </Principal>
+            <Dependent Role="MONTHS">
+              <PropertyRef Name="YearID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -442,6 +498,20 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+
+        <Association Name="FK_Teachers_Users_UserID">
+          <End Role="Users" Type="Self.Users" Multiplicity="1" />
+          <End Role="Teachers" Type="Self.Teachers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Teachers">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+
         <Association Name="FK_TeacherStudents_Students_StudentID">
           <End Role="Students" Type="Self.Students" Multiplicity="1" />
           <End Role="TeacherStudents" Type="Self.TeacherStudents" Multiplicity="*" />
@@ -527,6 +597,7 @@
           <EntitySet Name="Grades" EntityType="Self.Grades" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Guardians" EntityType="Self.Guardians" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Managers" EntityType="Self.Managers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MONTHS" EntityType="Self.MONTHS" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Salarys" EntityType="Self.Salarys" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Schools" EntityType="Self.Schools" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Stage" EntityType="Self.Stage" Schema="dbo" store:Type="Tables" />
@@ -547,6 +618,10 @@
           <AssociationSet Name="FK_Divisions_Classes_ClassID" Association="Self.FK_Divisions_Classes_ClassID">
             <End Role="Classes" EntitySet="Classes" />
             <End Role="Divisions" EntitySet="Divisions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grades_MONTHS" Association="Self.FK_Grades_MONTHS">
+            <End Role="MONTHS" EntitySet="MONTHS" />
+            <End Role="Grades" EntitySet="Grades" />
           </AssociationSet>
           <AssociationSet Name="FK_Grades_Students" Association="Self.FK_Grades_Students">
             <End Role="Students" EntitySet="Students" />
@@ -571,6 +646,14 @@
           <AssociationSet Name="FK_Managers_Users_UserID" Association="Self.FK_Managers_Users_UserID">
             <End Role="Users" EntitySet="Users" />
             <End Role="Managers" EntitySet="Managers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONTHS_users" Association="Self.FK_MONTHS_users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MONTHS" EntitySet="MONTHS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONTHS_yera" Association="Self.FK_MONTHS_yera">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="MONTHS" EntitySet="MONTHS" />
           </AssociationSet>
           <AssociationSet Name="FK_Salarys_Teachers_TeacherID" Association="Self.FK_Salarys_Teachers_TeacherID">
             <End Role="Teachers" EntitySet="Teachers" />
@@ -612,6 +695,12 @@
             <End Role="Subjects" EntitySet="Subjects" />
             <End Role="SubjectStudents" EntitySet="SubjectStudents" />
           </AssociationSet>
+
+          <AssociationSet Name="FK_Teachers_Users_UserID" Association="Self.FK_Teachers_Users_UserID">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Teachers" EntitySet="Teachers" />
+          </AssociationSet>
+
           <AssociationSet Name="FK_TeacherStudents_Students_StudentID" Association="Self.FK_TeacherStudents_Students_StudentID">
             <End Role="Students" EntitySet="Students" />
             <End Role="TeacherStudents" EntitySet="TeacherStudents" />
@@ -805,6 +894,12 @@
           <NavigationProperty Name="TeacherSubjectStudent" Relationship="Self.FK_TeacherSubjectStudent_Students_StudentID" FromRole="Students" ToRole="TeacherSubjectStudent" />
           <NavigationProperty Name="Classes" Relationship="Self.StudentClass" FromRole="Students" ToRole="Classes" />
           <NavigationProperty Name="Teachers" Relationship="Self.TeacherStudents" FromRole="Students" ToRole="Teachers" />
+
+          <Property Name="URLImage" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PayMent" Type="Int32" />
+          <Property Name="PlaceOFBirth" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Grades" Relationship="SchoolDBModel.FK_Grades_Students" FromRole="Students" ToRole="Grades" />
+
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
@@ -817,6 +912,7 @@
           <NavigationProperty Name="Grades" Relationship="Self.FK_Grades_subjects" FromRole="Subjects" ToRole="Grades" />
           <NavigationProperty Name="SubjectStudents" Relationship="Self.FK_SubjectStudents_Subjects_SubjectID" FromRole="Subjects" ToRole="SubjectStudents" />
           <NavigationProperty Name="TeacherSubjectStudent" Relationship="Self.FK_TeacherSubjectStudent_Subjects_SubjectID" FromRole="Subjects" ToRole="TeacherSubjectStudent" />
+          <NavigationProperty Name="Grades" Relationship="SchoolDBModel.FK_Grades_subjects" FromRole="Subjects" ToRole="Grades" />
         </EntityType>
         <EntityType Name="SubjectStudents">
           <Key>
@@ -874,6 +970,11 @@
           <NavigationProperty Name="Guardians" Relationship="Self.FK_Guardians_Users_UserID" FromRole="Users" ToRole="Guardians" />
           <NavigationProperty Name="Managers" Relationship="Self.FK_Managers_Users_UserID" FromRole="Users" ToRole="Managers" />
           <NavigationProperty Name="Students" Relationship="Self.FK_Students_Users_UserID" FromRole="Users" ToRole="Students" />
+
+          <NavigationProperty Name="Teachers" Relationship="Self.FK_Teachers_Users_UserID" FromRole="Users" ToRole="Teachers" />
+          <NavigationProperty Name="Grades" Relationship="SchoolDBModel.FK_Grades_users" FromRole="Users" ToRole="Grades" />
+          <NavigationProperty Name="MONTHS" Relationship="SchoolDBModel.FK_MONTHS_users" FromRole="Users" ToRole="MONTH" />
+
         </EntityType>
         <EntityType Name="Years">
           <Key>
@@ -887,6 +988,7 @@
           <Property Name="SchoolID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="Schools" Relationship="Self.FK_Years_Schools_SchoolID" FromRole="Years" ToRole="Schools" />
           <NavigationProperty Name="Stages" Relationship="Self.FK_Stages_Years_YearID" FromRole="Years" ToRole="Stages" />
+          <NavigationProperty Name="MONTHS" Relationship="SchoolDBModel.FK_MONTHS_yera" FromRole="Years" ToRole="MONTH" />
         </EntityType>
         <Association Name="FK_Classes_Stages_StageID">
           <End Role="Stages" Type="Self.Stages" Multiplicity="1" />
@@ -1250,7 +1352,142 @@
             <End Role="Students" EntitySet="Students" />
             <End Role="Teachers" EntitySet="Teachers" />
           </AssociationSet>
+
+          <EntitySet Name="Grades" EntityType="SchoolDBModel.Grades" />
+          <AssociationSet Name="FK_Grades_Students" Association="SchoolDBModel.FK_Grades_Students">
+            <End Role="Students" EntitySet="Students" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
+          <EntitySet Name="MONTHS" EntityType="SchoolDBModel.MONTH" />
+          <AssociationSet Name="FK_Grades_MONTHS" Association="SchoolDBModel.FK_Grades_MONTHS">
+            <End Role="MONTH" EntitySet="MONTHS" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grades_subjects" Association="SchoolDBModel.FK_Grades_subjects">
+            <End Role="Subjects" EntitySet="Subjects" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Grades_users" Association="SchoolDBModel.FK_Grades_users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Grades" EntitySet="Grades" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONTHS_users" Association="SchoolDBModel.FK_MONTHS_users">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="MONTH" EntitySet="MONTHS" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MONTHS_yera" Association="SchoolDBModel.FK_MONTHS_yera">
+            <End Role="Years" EntitySet="Years" />
+            <End Role="MONTH" EntitySet="MONTHS" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Grades">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="studentID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Students" Relationship="SchoolDBModel.FK_Grades_Students" FromRole="Grades" ToRole="Students" />
+          <Property Name="testing_value" Type="Int32" Nullable="false" />
+          <Property Name="share_value" Type="Int32" Nullable="false" />
+          <Property Name="atendance_value" Type="Int32" Nullable="false" />
+          <Property Name="shafahi_value" Type="Int32" Nullable="false" />
+          <Property Name="homework_value" Type="Int32" Nullable="false" />
+          <Property Name="subject_id" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="month_id" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="MONTH" Relationship="SchoolDBModel.FK_Grades_MONTHS" FromRole="Grades" ToRole="MONTH" />
+          <NavigationProperty Name="Subject" Relationship="SchoolDBModel.FK_Grades_subjects" FromRole="Grades" ToRole="Subjects" />
+          <NavigationProperty Name="User" Relationship="SchoolDBModel.FK_Grades_users" FromRole="Grades" ToRole="Users" />
+        </EntityType>
+        <Association Name="FK_Grades_Students">
+          <End Type="SchoolDBModel.Students" Role="Students" Multiplicity="1" />
+          <End Type="SchoolDBModel.Grades" Role="Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Students">
+              <PropertyRef Name="StudentID" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="studentID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="MONTH">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="value" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="YearID" Type="Int32" Nullable="false" />
+          <Property Name="user_id" Type="Int32" Nullable="false" />
+          <Property Name="note" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Grades" Relationship="SchoolDBModel.FK_Grades_MONTHS" FromRole="MONTH" ToRole="Grades" />
+          <NavigationProperty Name="User" Relationship="SchoolDBModel.FK_MONTHS_users" FromRole="MONTH" ToRole="Users" />
+          <NavigationProperty Name="Year" Relationship="SchoolDBModel.FK_MONTHS_yera" FromRole="MONTH" ToRole="Years" />
+        </EntityType>
+        <Association Name="FK_Grades_MONTHS">
+          <End Type="SchoolDBModel.MONTH" Role="MONTH" Multiplicity="1" />
+          <End Type="SchoolDBModel.Grades" Role="Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MONTH">
+              <PropertyRef Name="id" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="month_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grades_subjects">
+          <End Type="SchoolDBModel.Subjects" Role="Subjects" Multiplicity="1" />
+          <End Type="SchoolDBModel.Grades" Role="Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Subjects">
+              <PropertyRef Name="SubjectID" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="subject_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Grades_users">
+          <End Type="SchoolDBModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="SchoolDBModel.Grades" Role="Grades" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="Grades">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONTHS_users">
+          <End Type="SchoolDBModel.Users" Role="Users" Multiplicity="1" />
+          <End Type="SchoolDBModel.MONTH" Role="MONTH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="MONTH">
+              <PropertyRef Name="user_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MONTHS_yera">
+          <End Type="SchoolDBModel.Years" Role="Years" Multiplicity="1" />
+          <End Type="SchoolDBModel.MONTH" Role="MONTH" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Years">
+              <PropertyRef Name="YearID" />
+            </Principal>
+            <Dependent Role="MONTH">
+              <PropertyRef Name="YearID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+
+        </EntityContainer>
+
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1490,6 +1727,36 @@
               <ScalarProperty Name="TeacherID" ColumnName="TeacherID" />
             </EndProperty>
           </AssociationSetMapping>
+
+          <EntitySetMapping Name="Grades">
+            <EntityTypeMapping TypeName="SchoolDBModel.Grades">
+              <MappingFragment StoreEntitySet="Grades">
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="month_id" ColumnName="month_id" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="subject_id" ColumnName="subject_id" />
+                <ScalarProperty Name="homework_value" ColumnName="homework_value" />
+                <ScalarProperty Name="shafahi_value" ColumnName="shafahi_value" />
+                <ScalarProperty Name="atendance_value" ColumnName="atendance_value" />
+                <ScalarProperty Name="share_value" ColumnName="share_value" />
+                <ScalarProperty Name="testing_value" ColumnName="testing_value" />
+                <ScalarProperty Name="studentID" ColumnName="studentID" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MONTHS">
+            <EntityTypeMapping TypeName="SchoolDBModel.MONTH">
+              <MappingFragment StoreEntitySet="MONTHS">
+                <ScalarProperty Name="note" ColumnName="note" />
+                <ScalarProperty Name="user_id" ColumnName="user_id" />
+                <ScalarProperty Name="YearID" ColumnName="YearID" />
+                <ScalarProperty Name="value" ColumnName="value" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

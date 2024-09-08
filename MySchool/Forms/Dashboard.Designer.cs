@@ -47,6 +47,7 @@
             treeNode7,
             treeNode8,
             treeNode9});
+
             System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("عرض المواد");
             System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("إضافة مادة");
             System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("المواد الدراسية", new System.Windows.Forms.TreeNode[] {
@@ -63,6 +64,7 @@
             System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("الحسابات");
             System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("المدونات");
             System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("الإدارة");
+
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
@@ -235,6 +237,7 @@
             treeNode10.Name = "Node2";
             treeNode10.SelectedImageIndex = 9;
             treeNode10.Text = "الطلاب";
+
             treeNode11.Name = "Node1";
             treeNode11.Text = "عرض المواد";
             treeNode12.Name = "Node3";
@@ -268,6 +271,7 @@
             treeNode22.ImageKey = "icon-20.png";
             treeNode22.Name = "Node9";
             treeNode22.Text = "الإدارة";
+
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode4,
             treeNode6,

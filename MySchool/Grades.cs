@@ -15,15 +15,22 @@ namespace MySchool
     public partial class Grades
     {
         public int id { get; set; }
-        public int value { get; set; }
         public int studentID { get; set; }
+
+        public int testing_value { get; set; }
+        public int share_value { get; set; }
+        public int atendance_value { get; set; }
+        public int shafahi_value { get; set; }
+        public int homework_value { get; set; }
         public int subject_id { get; set; }
         public int user_id { get; set; }
-        public string grade_type { get; set; }
+        public int month_id { get; set; }
         public string note { get; set; }
     
         public virtual Students Students { get; set; }
-        public virtual Subjects Subjects { get; set; }
-        public virtual Users Users { get; set; }
+        public virtual MONTH MONTH { get; set; }
+        public virtual Subjects Subject { get; set; }
+        public virtual Users User { get; set; }
+
     }
 }
