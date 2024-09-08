@@ -1,9 +1,13 @@
+<<<<<<< HEAD
+﻿using System;
+=======
 ﻿
 using Guna.UI2.AnimatorNS;
 using Guna.UI2.WinForms;
 using Myschool.Helpers;
 using MySchool.TOOLS_HELPER;
 using System;
+>>>>>>> salah5
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -17,6 +21,12 @@ namespace MySchool.userControl
 {
     public partial class UserControlTeachers : UserControl
     {
+<<<<<<< HEAD
+        public UserControlTeachers()
+        {
+            InitializeComponent();
+        }
+=======
         private readonly SchoolDBEntities db1 = new SchoolDBEntities();
         private tools tool = new tools();
         private int flag = 0;
@@ -287,5 +297,6 @@ namespace MySchool.userControl
 
 
 
+>>>>>>> salah5
     }
 }

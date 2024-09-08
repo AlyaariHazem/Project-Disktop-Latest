@@ -36,8 +36,15 @@ namespace MySchool
         public int UserID { get; set; }
         public int DivisionID { get; set; }
         public Nullable<int> PayMent { get; set; }
+
         public string URLImage { get; set; }
         public string PlaceOfBirth { get; set; }
+
+
+        public Nullable<System.DateTime> PlaceOFBirth { get; set; }
+
+        public string PlaceOFBirth { get; set; }
+
     
         public virtual Divisions Divisions { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

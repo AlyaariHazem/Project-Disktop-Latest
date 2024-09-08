@@ -23,11 +23,12 @@ namespace MySchool.userControl
             InitializeDataGridViewColumns();
             LoadData();
 
+            guna2TabControl1.RightToLeftLayout = true;
+            guna2TabControl1.RightToLeft = RightToLeft.Yes;
 
-
-            tool.StyleDataGridView(guna2DataGridView1, guna2TabControl1);
-            tool.StyleDataGridView(guna2DataGridView2, guna2TabControl1);
-            tool.StyleDataGridView(guna2DataGridView3, guna2TabControl1);
+            tool.StyleDataGridView(guna2DataGridView1);
+            tool.StyleDataGridView(guna2DataGridView2);
+            tool.StyleDataGridView(guna2DataGridView3);
 
          
             guna2DataGridView2.Columns["StudentCount"].Width = 150;
@@ -141,10 +142,10 @@ namespace MySchool.userControl
 
             tool.LoadDataIntoDataGridView(guna2DataGridView1, divisionData, division => new object[]
             {
-        division.DivisionID,
-        division.DivisionName,
-        division.ClassName,
-        division.StudentCount            });
+            division.DivisionID,
+            division.DivisionName,
+            division.ClassName,
+            division.StudentCount            });
 
             // Load data for Guna2DataGridView2 (Stages)
             var stagesData = db.Stages
@@ -160,11 +161,11 @@ namespace MySchool.userControl
 
             tool.LoadDataIntoDataGridView(guna2DataGridView2, stagesData, stage => new object[]
             {
-        stage.StageID,
-        stage.StageName,
-        stage.Classes,
-        stage.StudentCount,
-        stage.Note
+                stage.StageID,
+                stage.StageName,
+                stage.Classes,
+                stage.StudentCount,
+                stage.Note
             });
 
 
@@ -699,8 +700,10 @@ namespace MySchool.userControl
             } 
         }
 
+        private void tabPage3_Click(object sender, EventArgs e)
+        {
 
-
+        }
     }
 
 

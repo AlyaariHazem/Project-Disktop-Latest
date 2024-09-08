@@ -13,6 +13,10 @@ namespace MySchool.TOOLS_HELPER
     internal class tools
     {
 
+<<<<<<< HEAD
+        public void StyleDataGridView(Guna2DataGridView x)
+        {
+=======
         public void StyleDataGridView(Guna2DataGridView x, Guna2TabControl tabControl =null)
         {
             if (tabControl != null)
@@ -20,6 +24,7 @@ namespace MySchool.TOOLS_HELPER
                 tabControl.RightToLeftLayout = true;
                 tabControl.RightToLeft = RightToLeft.Yes;
             }
+>>>>>>> salah5
             // DataGridView properties
             x.AllowUserToAddRows = false;
             x.AllowUserToDeleteRows = false;

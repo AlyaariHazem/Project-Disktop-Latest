@@ -149,8 +149,14 @@
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="DivisionID" Type="int" Nullable="false" />
           <Property Name="PayMent" Type="int" />
+
           <Property Name="URLImage" Type="nvarchar(max)" />
           <Property Name="PlaceOfBirth" Type="nvarchar" MaxLength="255" />
+
+          <Property Name="PlaceOFBirth" Type="date" />
+
+          <Property Name="PlaceOFBirth" Type="varchar" MaxLength="200" />
+
         </EntityType>
         <EntityType Name="Subjects">
           <Key>
@@ -805,6 +811,17 @@
           <NavigationProperty Name="TeacherSubjectStudent" Relationship="Self.FK_TeacherSubjectStudent_Students_StudentID" FromRole="Students" ToRole="TeacherSubjectStudent" />
           <NavigationProperty Name="Classes" Relationship="Self.StudentClass" FromRole="Students" ToRole="Classes" />
           <NavigationProperty Name="Teachers" Relationship="Self.TeacherStudents" FromRole="Students" ToRole="Teachers" />
+
+
+          <Property Name="URLImage" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="PayMent" Type="Int32" />
+
+          <Property Name="PlaceOFBirth" Type="DateTime" Precision="0" />
+
+          <Property Name="PlaceOFBirth" Type="String" MaxLength="200" Unicode="false" FixedLength="false" />
+
+          <NavigationProperty Name="Grades" Relationship="SchoolDBModel.FK_Grades_Students" FromRole="Students" ToRole="Grades" />
+
         </EntityType>
         <EntityType Name="Subjects">
           <Key>

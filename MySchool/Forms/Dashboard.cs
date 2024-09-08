@@ -18,10 +18,7 @@ namespace MySchool.Forms
         {
             InitializeComponent();
 
-            panel1.Controls.Clear();
-            UserControlDashboard userControlDashboard = new UserControlDashboard();
-            userControlDashboard.Dock = DockStyle.Fill;
-            panel1.Controls.Add(userControlDashboard);
+            userControlDashboard();
 
         }
 
@@ -62,6 +59,11 @@ namespace MySchool.Forms
             else if (message.ToLower() == "شهادة سنوية")
             {
                 LoadUserControlcertificateForYear();
+            }
+
+            else if (message.ToLower() == "إضافة درجات")
+            {
+                LoadUserControlStudents();
             }
 
         }
@@ -143,10 +145,30 @@ namespace MySchool.Forms
 
             panel1.Controls.Add(userControlSubjects);
         }
+
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
 
         }
+
+        private void MainClick(object sender, EventArgs e)
+        {
+            userControlDashboard();
+        }
+        private void userControlDashboard()
+        {
+            panel1.Controls.Clear();
+
+            UserControlDashboard userControlDashboard = new UserControlDashboard();
+
+            userControlDashboard.Dock = DockStyle.Fill;
+
+            panel1.Controls.Add(userControlDashboard);
+        }
+
+        private void TextClick(object sender, EventArgs e)
+        {
+            userControlDashboard();
 
         private void guna2PictureBox4_Click(object sender, EventArgs e)
         {
