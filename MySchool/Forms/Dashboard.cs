@@ -1,4 +1,5 @@
 ﻿using MySchool.userControl;
+using MySchool.userControl.Reports;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -50,13 +51,56 @@ namespace MySchool.Forms
             {
                 LoadUserControlSubject();
             }
-            
-            else if (message.ToLower() == "الدرجات")
+
+            else if (message.ToLower() == "التقويم")
             {
-                LoadUserControlgrades();
+                LoadUserControlReports();
+            }
+            else if (message.ToLower() == "شهادة شهرية")
+            {
+                LoadUserControlcertificate();
+            }
+            else if (message.ToLower() == "شهادة سنوية")
+            {
+                LoadUserControlcertificateForYear();
             }
 
         }
+
+        private void LoadUserControlcertificateForYear()
+        {
+            panel1.Controls.Clear();
+
+            UserControlReports userControlReports = new UserControlReports();
+
+            userControlReports.Dock = DockStyle.Fill;
+
+            panel1.Controls.Add(userControlReports);
+        }
+
+        private void LoadUserControlcertificate()
+        {
+            panel1.Controls.Clear();
+
+            UserControlCertifcate userControlCertifcate = new UserControlCertifcate();
+
+            userControlCertifcate.Dock = DockStyle.Fill;
+
+            panel1.Controls.Add(userControlCertifcate);
+        }
+
+        private void LoadUserControlReports()
+        {
+            panel1.Controls.Clear();
+
+
+            UserControlReports userControlReports = new UserControlReports();
+
+            userControlReports.Dock = DockStyle.Fill;
+
+            panel1.Controls.Add(userControlReports);
+        }
+
         private void LoadUserControlStage()
         {
             // Clear the panel before adding a new control

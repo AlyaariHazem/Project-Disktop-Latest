@@ -28,6 +28,7 @@ namespace MySchool
         public virtual DbSet<C__EFMigrationsHistory> C__EFMigrationsHistory { get; set; }
         public virtual DbSet<Classes> Classes { get; set; }
         public virtual DbSet<Divisions> Divisions { get; set; }
+        public virtual DbSet<Grades> Grades { get; set; }
         public virtual DbSet<Guardians> Guardians { get; set; }
         public virtual DbSet<Managers> Managers { get; set; }
         public virtual DbSet<Salarys> Salarys { get; set; }
@@ -41,7 +42,9 @@ namespace MySchool
         public virtual DbSet<TeacherSubjectStudent> TeacherSubjectStudent { get; set; }
         public virtual DbSet<Users> Users { get; set; }
         public virtual DbSet<Years> Years { get; set; }
+
         public virtual DbSet<Grades> Grades { get; set; }
         public virtual DbSet<MONTH> MONTHS { get; set; }
+
     }
 }

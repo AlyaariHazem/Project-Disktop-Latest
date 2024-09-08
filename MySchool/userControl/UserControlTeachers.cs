@@ -25,8 +25,8 @@ namespace MySchool.userControl
         {
             InitializeComponent();
 
-         
 
+            tool.StyleDataGridView(guna2DataGridView2);
             // Initialize DataGridView columns
             tool.InitializeDataGridView(guna2DataGridView2, new Dictionary<string, string>
             {
@@ -108,8 +108,7 @@ namespace MySchool.userControl
                     { "Gender", combo_gender.Text },
                     { "Age", CalculateAge(birthofdate.Value) },
                     { "HireDate", hirdate.Value },
-                    { "ManagerID", 1 },
-                    { "UserID", Forms.Login.userid }
+                    
                   
                 };
 

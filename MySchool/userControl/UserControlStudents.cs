@@ -19,17 +19,17 @@ namespace MySchool.userControl
     {
         private readonly SchoolDBEntities db = new SchoolDBEntities();
 
-        private tools tool=new tools();
+        private tools tool = new tools();
         public UserControlStudents()
         {
             InitializeComponent();
-            tool.StyleDataGridView(guna2DataGridView1); 
+            tool.StyleDataGridView(guna2DataGridView1);
             InitializeDataGridViewColumns();
             loaddata();
         }
 
-      
-       
+
+
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
@@ -44,17 +44,17 @@ namespace MySchool.userControl
             {
                 DataGridViewRow selectedRow = guna2DataGridView1.Rows[e.RowIndex]; if (guna2DataGridView1.Columns[e.ColumnIndex].Name == "Edit")
                 {
-                    
+                    var result = MessageBox.Show("thank you", "Confirm ", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
 
                     int student_id = (int)guna2DataGridView1.Rows[e.RowIndex].Cells["StudentID"].Value;
-                    
-                    open_addstudent_control(student_id,1);
+
+                    open_addstudent_control(student_id, 1);
 
                 }
                 else if (guna2DataGridView1.Columns[e.ColumnIndex].Name == "Delete")
                 {
 
-              
+
 
                     int studentId = (int)guna2DataGridView1.Rows[e.RowIndex].Cells["StudentID"].Value;
                     var result = MessageBox.Show("هل أنت متأكد من أنك تريد حذف الطالب ؟", "Confirm Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
@@ -81,7 +81,7 @@ namespace MySchool.userControl
 
 
 
-    
+
 
         private void txtsearch_TextChanged(object sender, EventArgs e)
         {
@@ -105,8 +105,8 @@ namespace MySchool.userControl
 
     }, new Dictionary<string, (string, string)>
     {
-        {"Delete", ("حذف", "حذف")},
-        {"Edit", ("تعديل", "تعديل")}
+        {"Edit", ("تعديل", "تعديل")},
+        {"Delete", ("حذف", "حذف")}
     },
      new Dictionary<string, string>
     {

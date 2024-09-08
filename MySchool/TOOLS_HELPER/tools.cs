@@ -257,6 +257,13 @@ namespace MySchool.TOOLS_HELPER
 
         public Image LoadImage(string relativeFilePath)
         {
+            // Check if the relativeFilePath is null or empty
+            if (string.IsNullOrEmpty(relativeFilePath))
+            {
+                Console.WriteLine("Error: The relative file path is null or empty."); // Debugging output
+                return Properties.Resources.DefaultProfileImage;
+            }
+
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string fullPath = Path.Combine(basePath, relativeFilePath);
 
@@ -272,8 +279,6 @@ namespace MySchool.TOOLS_HELPER
         }
 
 
-
-     
 
 
 

@@ -14,12 +14,6 @@ namespace MySchool
     
     public partial class Managers
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public Managers()
-        {
-            this.Teachers = new HashSet<Teachers>();
-        }
-    
         public int ManagerID { get; set; }
         public string FullName_FirstName { get; set; }
         public string FullName_SecondName { get; set; }
@@ -33,7 +27,5 @@ namespace MySchool
     
         public virtual Schools Schools { get; set; }
         public virtual Users Users { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Teachers> Teachers { get; set; }
     }
 }

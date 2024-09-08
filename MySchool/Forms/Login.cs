@@ -26,24 +26,28 @@ namespace MySchool.Forms
             string username=guna2TextBox1.Text;
             string password=guna2TextBox2.Text;
 
-           // var user=db.Users.FirstOrDefaultAsync(u=>u.UserName == username && u.Password==password);
+            // var user=db.Users.FirstOrDefaultAsync(u=>u.UserName == username && u.Password==password);
 
-            var user = db.Users.FirstOrDefault(u => u.UserName == username && u.Password == password);
-            int usid =user.UserID;
-            if (user != null)
-            {
-                // Store the UserId after successful login
-                userid = usid;
-                // Open the Dashboard form
-              Dashboard dashboard = new Dashboard();
-               dashboard.Show();
-             this.Visible = false;
-            }
-            else
-            {
-                guna2TextBox1.Text = "";
-                guna2TextBox2.Text = "";
-            }
+            //    var user = db.Users.FirstOrDefault(u => u.UserName == username && u.Password == password);
+            //    int usid =user.UserID;
+            //    if (user != null)
+            //    {
+            //        // Store the UserId after successful login
+            //        userid = usid;
+            //        // Open the Dashboard form
+            //      Dashboard dashboard = new Dashboard();
+            //       dashboard.Show();
+            //     this.Visible = false;
+            //    }
+            //    else
+            //    {
+            //        guna2TextBox1.Text = "";
+            //        guna2TextBox2.Text = "";
+            //    }
+           
+            Dashboard dashboard = new Dashboard();
+            dashboard.Show();
+            this.Visible = false;
         }
 
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)

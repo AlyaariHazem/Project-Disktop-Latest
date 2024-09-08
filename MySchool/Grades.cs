@@ -16,6 +16,7 @@ namespace MySchool
     {
         public int id { get; set; }
         public int studentID { get; set; }
+
         public int testing_value { get; set; }
         public int share_value { get; set; }
         public int atendance_value { get; set; }
@@ -30,5 +31,6 @@ namespace MySchool
         public virtual MONTH MONTH { get; set; }
         public virtual Subjects Subject { get; set; }
         public virtual Users User { get; set; }
+
     }
 }

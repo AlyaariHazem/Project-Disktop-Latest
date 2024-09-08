@@ -152,6 +152,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="TOOLS_HELPER\tools.cs" />
+    <Compile Include="userControl\Reports\UserControlCertifcate.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\Reports\UserControlCertifcate.Designer.cs">
+      <DependentUpon>UserControlCertifcate.cs</DependentUpon>
+    </Compile>
     <Compile Include="userControl\UserControlAddStudent.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -164,11 +170,19 @@
     <Compile Include="userControl\UserControlDashboard.Designer.cs">
       <DependentUpon>UserControlDashboard.cs</DependentUpon>
     </Compile>
+
     <Compile Include="userControl\UserControlgrade.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="userControl\UserControlgrade.Designer.cs">
       <DependentUpon>UserControlgrade.cs</DependentUpon>
+
+    <Compile Include="userControl\Reports\UserControlReports.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="userControl\Reports\UserControlReports.Designer.cs">
+      <DependentUpon>UserControlReports.cs</DependentUpon>
+
     </Compile>
     <Compile Include="userControl\UserControlStudents.cs">
       <SubType>UserControl</SubType>
@@ -219,14 +233,22 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="userControl\Reports\UserControlCertifcate.resx">
+      <DependentUpon>UserControlCertifcate.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="userControl\UserControlAddStudent.resx">
       <DependentUpon>UserControlAddStudent.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="userControl\UserControlDashboard.resx">
       <DependentUpon>UserControlDashboard.cs</DependentUpon>
     </EmbeddedResource>
+
     <EmbeddedResource Include="userControl\UserControlgrade.resx">
       <DependentUpon>UserControlgrade.cs</DependentUpon>
+
+    <EmbeddedResource Include="userControl\Reports\UserControlReports.resx">
+      <DependentUpon>UserControlReports.cs</DependentUpon>
+
     </EmbeddedResource>
     <EmbeddedResource Include="userControl\UserControlStudents.resx">
       <DependentUpon>UserControlStudents.cs</DependentUpon>
@@ -262,16 +284,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model1.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Model1.Context.cs</LastGenOutput>
-      <DependentUpon>Model1.edmx</DependentUpon>
-    </Content>
-    <Content Include="Model1.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Model1.edmx</DependentUpon>
-      <LastGenOutput>Model1.cs</LastGenOutput>
-    </Content>
     <None Include="Resources\user-061.jpg" />
     <None Include="Resources\Hazem.jpg" />
     <None Include="Resources\icon-23.png" />
@@ -287,7 +299,19 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Model1.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Model1.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Model1.edmx</DependentUpon>
+      <LastGenOutput>Model1.cs</LastGenOutput>
+    </Content>
+    <None Include="Resources\الشعار.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>

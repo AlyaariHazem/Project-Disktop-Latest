@@ -17,6 +17,7 @@ namespace MySchool
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Subjects()
         {
+            this.Grades = new HashSet<Grades>();
             this.SubjectStudents = new HashSet<SubjectStudents>();
             this.TeacherSubjectStudent = new HashSet<TeacherSubjectStudent>();
             this.Grades = new HashSet<Grades>();
@@ -27,6 +28,8 @@ namespace MySchool
         public int ClassID { get; set; }
     
         public virtual Classes Classes { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Grades> Grades { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SubjectStudents> SubjectStudents { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
