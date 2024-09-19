@@ -327,5 +327,65 @@ namespace MySchool.TOOLS_HELPER
 
 
 
+        public Panel ClonePanel(Panel originalPanel)
+        {
+            // Create a new panel
+            Panel newPanel = new Panel();
+            newPanel.Size = originalPanel.Size;
+            newPanel.BackColor = originalPanel.BackColor;
+
+            // Loop through all controls in the original panel and clone them
+            foreach (Control control in originalPanel.Controls)
+            {
+                Control clonedControl = CloneControl(control);
+                newPanel.Controls.Add(clonedControl);
+            }
+
+            return newPanel;
+        }
+
+        public Control CloneControl(Control originalControl)
+        {
+            // Create a new control of the same type as the original
+            Control newControl = (Control)Activator.CreateInstance(originalControl.GetType());
+
+            // Copy common properties
+            newControl.Text = originalControl.Text;
+            newControl.Name = originalControl.Name;
+            newControl.Size = originalControl.Size;
+            newControl.Location = originalControl.Location;
+            newControl.Font = originalControl.Font;
+            newControl.ForeColor = originalControl.ForeColor;
+            newControl.BackColor = originalControl.BackColor;
+
+            // Check if the original control is a PictureBox and handle its special properties
+            if (originalControl is PictureBox originalPictureBox)
+            {
+                PictureBox newPictureBox = (PictureBox)newControl;
+                newPictureBox.Image = originalPictureBox.Image != null ? (System.Drawing.Image)originalPictureBox.Image.Clone() : null; // Clone the image if it's not null
+                newPictureBox.SizeMode = originalPictureBox.SizeMode;
+                newPictureBox.BorderStyle = originalPictureBox.BorderStyle;
+            }
+
+            // If the control is a container (like a panel or form), recursively clone its children
+            if (originalControl.HasChildren)
+            {
+                foreach (Control child in originalControl.Controls)
+                {
+                    Control clonedChild = CloneControl(child); // Recursive call to clone children
+                    newControl.Controls.Add(clonedChild);
+                }
+            }
+
+            return newControl; // Return the cloned control
+        }
+
+
+
+
+
+
+
+
     }
 }

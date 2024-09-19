@@ -300,7 +300,7 @@ namespace MySchool.userControl
 
                 })
             .ToList();
-
+            
             tool.LoadDataIntoDataGridView(guna2DataGridView2, grades, _grade => new object[]
             {
         _grade.studentid,
